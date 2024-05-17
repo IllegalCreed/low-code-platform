@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 const router = useRouter();
 
 const props = defineProps({
