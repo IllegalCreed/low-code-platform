@@ -16,7 +16,7 @@ const props = defineProps({
 });
 
 function goApp() {
-    router.push({ name: 'app', params: { id: props.app.id } });
+    router.push({ name: 'app', params: { appId: props.app?.id } });
 }
 
 

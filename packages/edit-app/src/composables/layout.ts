@@ -1,6 +1,6 @@
 import { debounce } from 'lodash-es'; // 假设使用 lodash 的 debounce 函数
 
-export function useFlexWarpCenter(cardWidth: number, cardMarginX: number, containerPaddingX: number) {
+export function useFlexWrapCenter(cardWidth: number, cardMarginX: number, containerPaddingX: number) {
     const containerWidth = ref(0);
     const calculateWidth = debounce(() => {
         const screenWidth = window.innerWidth - (containerPaddingX * 2);

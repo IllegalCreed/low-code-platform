@@ -17,14 +17,77 @@ const router = createRouter({
       redirect: '/appList',
       children: [
         {
-          path: '/appList',
+          path: 'appList',
           name: 'app-list',
           component: () => import('../views/home/AppList.vue')
         },
         {
-          path: '/app/:id',
+          path: 'app/:appId',
           name: 'app',
-          component: () => import('../views/app/AppView.vue')
+          component: () => import('../views/app/AppView.vue'),
+          redirect: '/app/:appId/dashboard',
+          children: [
+            {
+              path: 'dashboard',
+              name: 'dashboard',
+              component: () => import('../views/app/dashboard/DashboardView.vue'),
+              meta: { belong: 'dashboard', needToNaviagte: true }
+            },
+            {
+              path: 'data/:dataFormId?',
+              name: 'data',
+              component: () => import('../views/app/data/DataFormView.vue'),
+              meta: { belong: 'data', needToNaviagte: false }
+            },
+            {
+              path: 'storage',
+              name: 'storage',
+              component: () => import('../views/app/storage/StorageView.vue'),
+              meta: { belong: 'storage', needToNaviagte: true }
+            },
+            {
+              path: 'internal/:internalAPIId?',
+              name: 'internal',
+              component: () => import('../views/app/api/APIInternalView.vue'),
+              meta: { belong: 'internal', needToNaviagte: false }
+            },
+            {
+              path: 'external/:externalAPIId?',
+              name: 'external',
+              component: () => import('../views/app/api/APIExternalView.vue'),
+              meta: { belong: 'external', needToNaviagte: false }
+            },
+            {
+              path: 'page/pageId?',
+              name: 'page',
+              component: () => import('../views/app/page/PageView.vue'),
+              meta: { belong: 'page', needToNaviagte: false }
+            },
+            {
+              path: 'localization',
+              name: 'localization',
+              component: () => import('../views/app/localization/LocalizationView.vue'),
+              meta: { belong: 'localization', needToNaviagte: true }
+            },
+            {
+              path: 'flow/flowId?',
+              name: 'flow',
+              component: () => import('../views/app/flow/FlowView.vue'),
+              meta: { belong: 'flow', needToNaviagte: false }
+            },
+            {
+              path: 'import/importId?',
+              name: 'import',
+              component: () => import('../views/app/file/FileImportView.vue'),
+              meta: { belong: 'import', needToNaviagte: false }
+            },
+            {
+              path: 'export/exportId?',
+              name: 'export',
+              component: () => import('../views/app/file/FileExportView.vue'),
+              meta: { belong: 'export', needToNaviagte: false }
+            },
+          ]
         }
       ]
     },
