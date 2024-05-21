@@ -1,9 +1,9 @@
 <template>
     <div class="app-card" @click="goApp">
-        <div class="app-icon" :style="{ backgroundColor: app.color }">
-            {{ app.name[0].toUpperCase() }}
+        <div class="app-icon" :style="{ backgroundColor: props.app?.color }">
+            {{ props.app?.name[0].toUpperCase() }}
         </div>
-        <h3 class="app-name" :title="app.name">{{ app.name }}</h3>
+        <h3 class="app-name" :title="props.app?.name">{{ props.app?.name }}</h3>
     </div>
 </template>
 

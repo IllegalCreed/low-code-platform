@@ -1,5 +1,5 @@
-@import './colors.scss';
-@import './neumorphism.scss';
+@use './colors.scss';
+@use './neumorphism.scss';
 
 /* 应用 box-sizing: border-box 到所有元素 */
 *,
