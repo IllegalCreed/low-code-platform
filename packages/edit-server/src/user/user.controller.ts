@@ -1,20 +1,31 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Post, Get, Query } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
-import { User } from './user.entity';
+import { ApiResponse } from '../common/interfaces/api-response.interface';
+import { UserInterface } from './interfaces/user.interface';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private userService: UserService) {}
 
-  @Get()
-  findAll(): Promise<User[]> {
-    return this.userService.findAll();
+  @Post()
+  async register(
+    @Body() createUserDto: CreateUserDto,
+  ): Promise<ApiResponse<UserInterface>> {
+    return this.userService.register(createUserDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: number): Promise<User> {
-    return this.userService.findOne(id);
+  @Get('check-username')
+  async checkUsername(
+    @Query('username') username: string,
+  ): Promise<ApiResponse<{ available: boolean }>> {
+    return this.userService.isUsernameAvailable(username);
   }
 
-  // 其他路由方法...
+  @Get('check-email')
+  async checkEmail(
+    @Query('email') email: string,
+  ): Promise<ApiResponse<{ available: boolean }>> {
+    return this.userService.isEmailAvailable(email);
+  }
 }
