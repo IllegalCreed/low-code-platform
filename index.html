@@ -1,10 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/low-code-platform/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/low-code-platform/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <script>
+      // 从 URL 中获取路径
+      var redirect = new URLSearchParams(window.location.search).get('p')
+      if (redirect) {
+        window.history.replaceState(null, null, redirect)
+      }
+    </script>
     <script type="module" crossorigin src="/low-code-platform/assets/index-DAMEg8jS.js"></script>
     <link rel="stylesheet" crossorigin href="/low-code-platform/assets/index-DJY8NRXF.css">
   </head>
