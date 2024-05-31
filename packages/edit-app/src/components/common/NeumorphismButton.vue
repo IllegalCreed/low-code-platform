@@ -8,7 +8,7 @@
 
 <style lang="scss" scoped>
 .button-root-container {
-  @apply p-4;
+  @apply px-4 py-2;
   @apply rounded-2 border-0;
   @include neumorphism-btn(0.25rem);
 }

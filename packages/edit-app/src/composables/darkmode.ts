@@ -20,11 +20,11 @@ watch(
     setCssVar(VAR_SHADOW_INNER_LIGHT, targetValue)
     setCssVar(
       VAR_PAGE_BACKGROUND_COLOR_LIGHTEN,
-      adjustColorLightness(VAR_PAGE_BACKGROUND_COLOR, 10)
+      adjustColorLightness(VAR_PAGE_BACKGROUND_COLOR, 5)
     )
     setCssVar(
       VAR_PAGE_BACKGROUND_COLOR_DARKEN,
-      adjustColorLightness(VAR_PAGE_BACKGROUND_COLOR, -10)
+      adjustColorLightness(VAR_PAGE_BACKGROUND_COLOR, -5)
     )
   },
   { immediate: true }
