@@ -3,7 +3,7 @@ import HomeView from '@/views/home/HomeView.vue'
 import LoginView from '@/views/login/LoginView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
       path: '/login',
