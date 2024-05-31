@@ -55,10 +55,11 @@ function hexToHsl(hex: string): [number, number, number] {
   const [r, g, b] = hexToRgb(hex).map((x) => x / 255)
   const max = Math.max(r, g, b)
   const min = Math.min(r, g, b)
-  let h: number, s: number, l: number
-  l = (max + min) / 2
+  let h = 0
+  let s: number
+  const l = (max + min) / 2
   if (max === min) {
-    h = s = 0 // achromatic
+    s = 0
   } else {
     const d = max - min
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
