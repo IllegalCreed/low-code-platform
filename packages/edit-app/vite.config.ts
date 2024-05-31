@@ -22,12 +22,25 @@ export default defineConfig({
         'vue',
         'vue-router',
         '@vueuse/core',
+        // 自定义导入
+        {
+          // 包导入
+          axios: [
+            // 默认别名导入
+            ['default', 'axios'] // import { default as axios } from 'axios',
+          ],
+          moment: [['default', 'moment']],
+          // 项目内导入
+          '@/composables/darkmode': ['isDarkMode', 'useToggleDark'],
+          '@/composables/layout': ['useFlexWrapCenter'],
+          '@/composables/route': ['useMenuSelect']
+        }
       ],
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
       dts: true,
-      resolvers: [ElementPlusResolver(), IconsResolver(),],
+      resolvers: [ElementPlusResolver(), IconsResolver()]
     }),
     Icons({ compiler: 'vue3' })
   ],
@@ -35,6 +48,13 @@ export default defineConfig({
     alias: {
       '~': fileURLToPath(new URL('.', import.meta.url)),
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use 'src/styles/_neumorphism.scss' as *;`
+      }
     }
   }
 })

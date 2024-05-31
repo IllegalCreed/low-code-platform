@@ -1,0 +1,33 @@
+@use 'tailwind-colors' as *;
+
+/* 浅色模式自定义变量 */
+:root {
+  --text-color: #{$neutral-900};
+  --page-background-color: #{$slate-200};
+  --page-background-color-lighten: #{$slate-100};
+  --page-background-color-darken: #{$slate-300};
+
+  /* 原则是底色越浅白色透明度越靠近0.5 黑色越接近0，两者之和最好为0.5*/
+  --shadow-inner-light: 0.35;
+  --shadow-inner-dark: calc(0.5 - var(--shadow-inner-light));
+  --shadow-outer-light: calc(var(--shadow-inner-light) * 2);
+  --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
+
+  --a-hover-color: #{$indigo-500};
+}
+
+/* 深色模式自定义变量 */
+:root.dark {
+  --text-color: #{$neutral-400};
+  --page-background-color: #{$slate-800};
+  --page-background-color-lighten: #{$slate-700};
+  --page-background-color-darken: #{$slate-900};
+
+  /* 原则是底色越深白色透明度越靠近0 黑色越接近0.5，两者之和最好为0.5*/
+  --shadow-inner-light: 0.05;
+  // --shadow-inner-dark: calc(0.5 - var(--shadow-inner-light));
+  // --shadow-outer-light: calc(var(--shadow-inner-light) * 2);
+  // --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
+
+  --a-hover-color: #{$indigo-700};
+}

@@ -1,17 +1,55 @@
-@use './colors.scss';
-@use './neumorphism.scss';
+@use 'colors';
+
+/* 全局设置 */
+:root {
+  /* 在字库缺失情况下是否自动合成粗体和斜体 */
+  font-synthesis: none;
+  /* 易读性优先，但移动端会造成性能问题 */
+  text-rendering: optimizeLegibility;
+  /* 用来让浏览器默认控件自适应系统的深色浅色模式 */
+  color-scheme: light dark;
+  /* 抗锯齿设置 */
+  @apply antialiased;
+  /* 字体设置 */
+  @apply font-sans;
+}
 
 /* 应用 box-sizing: border-box 到所有元素 */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  @apply box-border;
 }
 
 /* 设置 body 的基本样式 */
 body {
-  @apply m-0 p-0; /* 移除 margin 和 padding */
-  @apply min-h-screen; /* 确保 body 至少与视口一样高 */
-  @apply text-gray-700 bg-white; /* 设置基本的文本和背景颜色 */
-  @apply font-sans; /* 使用无衬线字体 */
+  /* 移除 margin 和 padding */
+  @apply m-0 p-0;
+  /* 确保 body 至少与视口一样高 */
+  @apply min-h-screen;
+  /* 设置基本的文本和背景颜色 */
+  background-color: var(--page-background-color);
+  color: var(--text-color);
+}
+
+/* 切换时圆形变换的样式 */
+::view-transition-image-pair(root) {
+  @apply isolation-auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  @apply animate-none mix-blend-normal;
+}
+::view-transition-old(root) {
+  @apply z-1;
+}
+::view-transition-new(root) {
+  @apply z-9999;
+}
+.dark::view-transition-old(root) {
+  @apply z-9999;
+}
+.dark::view-transition-new(root) {
+  @apply z-1;
 }

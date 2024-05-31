@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    DarkModeSwitch: typeof import('./src/components/common/DarkModeSwitch.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
@@ -33,6 +34,7 @@ declare module 'vue' {
     'IMaterialSymbols:storageRounded': typeof import('~icons/material-symbols/storage-rounded')['default']
     'IMdi:file': typeof import('~icons/mdi/file')['default']
     'IMingcute:layoutFill': typeof import('~icons/mingcute/layout-fill')['default']
+    NeumorphismButton: typeof import('./src/components/common/NeumorphismButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
