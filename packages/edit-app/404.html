@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      // 检查 URL 是否含有路径
+      var path = window.location.pathname
+      // 重定向到 index.html，并将原始路径作为 URL 的一部分传递
+      window.location.replace('/' + (path !== '/' ? '?p=' + path : ''))
+    </script>
+  </head>
+  <body></body>
+</html>
