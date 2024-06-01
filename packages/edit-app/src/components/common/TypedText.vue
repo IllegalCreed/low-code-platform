@@ -42,13 +42,14 @@ function type() {
   const nextInterval = Math.max(0, isDeleting ? lastTime - adjustedTime : adjustedTime - lastTime)
   lastTime = adjustedTime
 
-  timeoutId = setTimeout(() => {
+  /* NOTE: 这里需要用window里面的setTimeout，因为ts不知道你用的是哪个，会在build时候给你报错 */
+  timeoutId = window.setTimeout(() => {
     displayText.value = isDeleting
       ? currentString.substring(0, --charIndex)
       : currentString.substring(0, ++charIndex)
 
     if (charIndex === 0 || charIndex === currentString.length) {
-      timeoutId = setTimeout(() => {
+      timeoutId = window.setTimeout(() => {
         isDeleting = !isDeleting
         if (!isDeleting) {
           stringArrayIndex = (stringArrayIndex + 1) % props.strings.length
@@ -88,7 +89,7 @@ onBeforeUnmount(() => {
 
   /* 光标 */
   &::after {
-    content: ''; 
+    content: '';
     @apply inline-block ml-1 w-1 h-1em;
     @apply align-middle;
     background-color: var(--text-color); /* 光标颜色 */
