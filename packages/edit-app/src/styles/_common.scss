@@ -1,0 +1,30 @@
+@use 'tailwind-colors' as *;
+
+/* 闪烁 */
+@keyframes blink {
+  from,
+  to {
+    opacity: 1; 
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 炫彩背景 */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@mixin background-colorful {
+  background: linear-gradient(45deg, $emerald-300, $blue-500, $purple-600, $pink-400, $orange-400);
+  background-size: 200% 200%;
+  animation: gradient-move 10s ease infinite;
+}

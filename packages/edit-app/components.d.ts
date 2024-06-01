@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BlurBall: typeof import('./src/components/common/BlurBall.vue')['default']
     DarkModeSwitch: typeof import('./src/components/common/DarkModeSwitch.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -32,5 +33,6 @@ declare module 'vue' {
     NeumorphismButton: typeof import('./src/components/common/NeumorphismButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TypedText: typeof import('./src/components/common/TypedText.vue')['default']
   }
 }

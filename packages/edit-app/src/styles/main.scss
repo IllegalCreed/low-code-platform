@@ -32,6 +32,13 @@ body {
   color: var(--text-color);
 }
 
+/* 顽固组件继承字体 */
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
 /* 切换时圆形变换的样式 */
 ::view-transition-image-pair(root) {
   @apply isolation-auto;

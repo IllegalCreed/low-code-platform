@@ -1,6 +1,10 @@
 <template>
   <div class="login-root-container">
-    <div class="login-banner-container"></div>
+    <div class="login-banner-container">
+      <!-- NOTE: background-clip:text 和 其他有背景色的东西叠加在一起，再做个动画效果，safari就整不会了 -->
+      <blur-ball v-if="!isSafari" absolute top="60%" left="60%" w="40%"></blur-ball>
+      <typed-text :strings="slogan" absolute top="25%" w="80%"></typed-text>
+    </div>
     <div class="login-main-container">
       <el-input v-model="account" placeholder="用户名" size="default" clearable></el-input>
       <el-input
@@ -17,9 +21,27 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/modules/auth'
+import { isSafari } from '@/utils/platform'
+
+const slogan = ref<string[]>([
+  `Build More,
+Code Less.`,
+  `Empower 
+Innovation,
+Simplify 
+Development.`,
+  `Unleash
+Creativity 
+with
+Every Click.`
+])
+/**
+ * 构建更多，编码更少。
+ * 赋能创新，简化开发。
+ * 每一次点击，释放创造力。
+ */
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -47,8 +69,9 @@ async function onLogin() {
   @apply p-8 min-h-screen;
 }
 .login-banner-container {
-  @apply flex-1;
-  @apply rounded-2;
+  @apply relative;
+  @apply flex-1 flex flex-col justify-center items-center;
+  @apply rounded-2 min-w-0 p-8;
   @include neumorphism-glass-shadow(0.25rem);
 }
 .login-main-container {
