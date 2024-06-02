@@ -3,6 +3,8 @@
 /* 浅色模式自定义变量 */
 :root {
   --text-color: #{$neutral-900};
+  --text-active-color: #{$indigo-500};
+
   --page-background-color: #{$slate-200};
   --page-background-color-lighten: #{$slate-100};
   --page-background-color-darken: #{$slate-300};
@@ -14,13 +16,14 @@
   --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
 
   --border-color: #{$neutral-300};
-
-  --a-hover-color: #{$indigo-500};
+  --height-light-background-color: var(--page-background-color-darken);
 }
 
 /* 深色模式自定义变量 */
 :root.dark {
   --text-color: #{$neutral-400};
+  --text-active-color: #{$indigo-600};
+
   --page-background-color: #{$slate-800};
   --page-background-color-lighten: #{$slate-700};
   --page-background-color-darken: #{$slate-900};
@@ -32,6 +35,5 @@
   // --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
 
   --border-color: #{$neutral-700};
-
-  --a-hover-color: #{$indigo-700};
+  --height-light-background-color: var(--page-background-color-lighten);
 }

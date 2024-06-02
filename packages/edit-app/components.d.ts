@@ -9,9 +9,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     BlurBall: typeof import('./src/components/common/BlurBall.vue')['default']
     DarkModeSwitch: typeof import('./src/components/common/DarkModeSwitch.vue')['default']
-    DropDown: typeof import('./src/components/common/DropDown.vue')['default']
+    DropDown: typeof import('./src/components/common/DropDown/DropDown.vue')['default']
+    DropDownItem: typeof import('./src/components/common/DropDown/DropDownItem.vue')['default']
+    DropDownMenu: typeof import('./src/components/common/DropDown/DropDownMenu.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
@@ -33,9 +34,11 @@ declare module 'vue' {
     'IMdi:file': typeof import('~icons/mdi/file')['default']
     'IMingcute:downLine': typeof import('~icons/mingcute/down-line')['default']
     'IMingcute:layoutFill': typeof import('~icons/mingcute/layout-fill')['default']
-    NeumorphismButton: typeof import('./src/components/common/NeumorphismButton.vue')['default']
+    NeumorphismButton: typeof import('./src/components/neumorphism/NeumorphismButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ToolBar: typeof import('./src/components/common/Toolbar/ToolBar.vue')['default']
+    TranslateDropDown: typeof import('./src/components/common/Toolbar/TranslateDropDown.vue')['default']
     TypedText: typeof import('./src/components/common/TypedText.vue')['default']
   }
 }

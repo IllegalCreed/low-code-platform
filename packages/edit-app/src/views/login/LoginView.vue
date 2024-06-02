@@ -15,8 +15,9 @@
         size="default"
         clearable
       ></el-input>
-      <el-button type="primary" size="default" @click="onLogin">登录</el-button>
-      <neumorphism-button id="login-btn">登录</neumorphism-button>
+      <neumorphism-button id="login-btn" @click="onLogin">{{
+        $t('common.login')
+      }}</neumorphism-button>
       <div v-if="error">{{ error }}</div>
       <dark-mode-switch />
     </div>
@@ -25,10 +26,9 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/modules/auth'
 import { isSafari } from '@/utils/platform'
-import ToolBar from './ToolBar.vue'
 const { t } = useI18n()
 
-const slogan = ref<string[]>([t('slogan.slogan1'), t('slogan.slogan2'), t('slogan.slogan3')])
+const slogan = computed(() => [t('slogan.slogan1'), t('slogan.slogan2'), t('slogan.slogan3')])
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -56,7 +56,7 @@ async function onLogin() {
   @apply p-8 min-h-screen;
 }
 .login-banner-container {
-  @apply relative;
+  @apply relative overflow-hidden;
   @apply flex-1 flex flex-col justify-center items-center;
   @apply rounded-2 min-w-0 p-8;
   @include neumorphism-glass-shadow(0.25rem);
