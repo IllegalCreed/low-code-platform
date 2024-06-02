@@ -13,6 +13,8 @@
   --shadow-outer-light: calc(var(--shadow-inner-light) * 2);
   --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
 
+  --border-color: #{$neutral-300};
+
   --a-hover-color: #{$indigo-500};
 }
 
@@ -28,6 +30,8 @@
   // --shadow-inner-dark: calc(0.5 - var(--shadow-inner-light));
   // --shadow-outer-light: calc(var(--shadow-inner-light) * 2);
   // --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
+
+  --border-color: #{$neutral-700};
 
   --a-hover-color: #{$indigo-700};
 }

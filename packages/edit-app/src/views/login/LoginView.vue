@@ -1,5 +1,6 @@
 <template>
   <div class="login-root-container">
+    <tool-bar absolute top-4 right-4></tool-bar>
     <div class="login-banner-container">
       <!-- NOTE: background-clip:text 和 其他有背景色的东西叠加在一起，再做个动画效果，safari就整不会了 -->
       <blur-ball v-if="!isSafari" absolute top="60%" left="60%" w="40%"></blur-ball>
@@ -24,24 +25,10 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/modules/auth'
 import { isSafari } from '@/utils/platform'
+import ToolBar from './ToolBar.vue'
+const { t } = useI18n()
 
-const slogan = ref<string[]>([
-  `Build More,
-Code Less.`,
-  `Empower 
-Innovation,
-Simplify 
-Development.`,
-  `Unleash
-Creativity 
-with
-Every Click.`
-])
-/**
- * 构建更多，编码更少。
- * 赋能创新，简化开发。
- * 每一次点击，释放创造力。
- */
+const slogan = ref<string[]>([t('slogan.slogan1'), t('slogan.slogan2'), t('slogan.slogan3')])
 
 const router = useRouter()
 const authStore = useAuthStore()

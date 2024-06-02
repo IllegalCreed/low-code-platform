@@ -89,3 +89,10 @@
     @include neumorphism-concave($deep, $bg);
   }
 }
+
+@mixin neumorphism-card($deep) {
+  @apply border-1 border-solid;
+  border-color:var(--border-color);
+  box-shadow:
+    #{$deep} #{$deep} #{$deep * 2} rgba(black, var(--shadow-outer-dark)),
+}
