@@ -6,7 +6,11 @@
       <typed-text :strings="slogan" absolute top="25%" w="80%"></typed-text>
     </div>
     <div class="login-main-container">
-      <el-input v-model="account" placeholder="用户名" size="default" clearable></el-input>
+      <neumorphism-input
+        id="account-input"
+        v-model="account"
+        placeholder="用户名"
+      ></neumorphism-input>
       <el-input
         v-model="password"
         placeholder="密码"
@@ -54,7 +58,7 @@ async function onLogin() {
   @apply flex flex-row items-stretch justify-stretch;
   @apply p-8 min-h-screen;
 
-  @media (max-width: $xl4) {
+  @media (max-width: $xl3) {
     @apply flex-col;
   }
 }
@@ -64,16 +68,10 @@ async function onLogin() {
   @apply rounded-2 min-w-0 p-8;
   @include neumorphism-glass-shadow(0.25rem);
 
-  @media (max-width: $xl4) {
-    @apply grow-3;
+  @media (max-width: $xl3) {
+    @apply grow-4;
     @apply mt-10;
 
-    span {
-      @apply text-12;
-    }
-  }
-
-  @media (max-width: $xl) {
     span {
       @apply text-10;
     }
@@ -82,18 +80,14 @@ async function onLogin() {
 .login-main-container {
   @apply flex-1 flex flex-col items-center justify-center;
 
-  @media (max-width: $xl4) {
+  @media (max-width: $xl3) {
     @apply mt-10;
   }
 
   #login-btn,
-  .el-input,
-  .el-button {
+  #account-input,
+  .el-input {
     @apply mb-5 w-72; // margin-bottom: 20px; width: 18rem;
-  }
-
-  .el-button {
-    @apply mt-2.5; // margin-top: 10px;
   }
 }
 </style>

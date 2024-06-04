@@ -5,24 +5,25 @@
 <script setup lang="ts">
 import { linear, easeInQuad } from '@/utils/ease'
 
-interface Props {
-  strings: string[]
-  totalTypeDuration?: number
-  totalDeleteDuration?: number
-  betweenInterval?: number
-  loop?: boolean
-  typingEasing?: Function
-  deletingEasing?: Function
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  totalTypeDuration: 2000,
-  totalDeleteDuration: 1500,
-  betweenInterval: 2000,
-  loop: true,
-  typingEasing: easeInQuad,
-  deletingEasing: linear
-})
+const props = withDefaults(
+  defineProps<{
+    strings: string[]
+    totalTypeDuration?: number
+    totalDeleteDuration?: number
+    betweenInterval?: number
+    loop?: boolean
+    typingEasing?: Function
+    deletingEasing?: Function
+  }>(),
+  {
+    totalTypeDuration: 2000,
+    totalDeleteDuration: 1500,
+    betweenInterval: 2000,
+    loop: true,
+    typingEasing: easeInQuad,
+    deletingEasing: linear
+  }
+)
 
 const displayText = ref('')
 let stringArrayIndex = 0

@@ -15,6 +15,14 @@
     inset -#{$deep} -#{$deep} #{$deep * 2} rgba(white, var(--shadow-inner-light));
 }
 
+@mixin neumorphism-all-shadow($deep) {
+  box-shadow:
+    #{$deep} #{$deep} #{$deep * 2} rgba(black, var(--shadow-outer-dark)),
+    -#{$deep} -#{$deep} #{$deep * 2} rgba(white, var(--shadow-outer-light)),
+    inset #{$deep} #{$deep} #{$deep * 2} rgba(black, var(--shadow-inner-dark)),
+    inset -#{$deep} -#{$deep} #{$deep * 2} rgba(white, var(--shadow-inner-light));
+}
+
 @function generate-dark-light-bg($bg) {
   $dark-bg: null;
   $light-bg: null;
@@ -93,6 +101,11 @@
 @mixin neumorphism-switch($deep) {
   @apply cursor-pointer select-none;
   @include neumorphism-inner-shadow($deep);
+}
+
+@mixin neumorphism-input($deep, $bg: var(--page-background-color)) {
+  @apply cursor-pointer select-none;
+  @include neumorphism-pressed($deep, $bg);
 }
 
 @mixin neumorphism-card($deep, $bg: var(--page-background-color)) {

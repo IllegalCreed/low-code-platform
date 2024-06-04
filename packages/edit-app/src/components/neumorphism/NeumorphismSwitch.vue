@@ -30,17 +30,18 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-  defaultValue?: boolean
-  activeColor?: string
-  inactiveColor?: string
-  activeSliderColor?: string
-  inactiveSliderColor?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  defaultValue: false
-})
+const props = withDefaults(
+  defineProps<{
+    defaultValue?: boolean
+    activeColor?: string
+    inactiveColor?: string
+    activeSliderColor?: string
+    inactiveSliderColor?: string
+  }>(),
+  {
+    defaultValue: false
+  }
+)
 
 const modelValue = defineModel<boolean>({ default: undefined })
 

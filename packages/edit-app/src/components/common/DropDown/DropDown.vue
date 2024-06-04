@@ -1,9 +1,14 @@
 <template>
-  <div class="dropdown-root-container">
+  <div
+    @mouseover="handleMouseOver"
+    @mouseleave="handleMouseLeave"
+    @click="handleClick"
+    class="dropdown-root-container"
+  >
     <div cursor-pointer>
       <slot></slot>
     </div>
-    <div class="popup">
+    <div class="popup" :class="{ visible: isPopupVisible }">
       <span class="current" v-if="props.current">{{ props.current?.content }}</span>
       <drop-down-menu :items="props.items"></drop-down-menu>
     </div>
@@ -11,11 +16,16 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-  current?: Item
-  items: Item[]
-}
-const props = defineProps<Props>()
+const props = withDefaults(
+  defineProps<{
+    current?: Item
+    items: Item[]
+    hoverable?: boolean
+  }>(),
+  {
+    hoverable: true
+  }
+)
 
 const emit = defineEmits<{
   onItemClick: [key: string]
@@ -24,6 +34,38 @@ const emit = defineEmits<{
 provide('itemClickHandle', (key: string) => {
   emit('onItemClick', key)
 })
+
+const isPopupVisible = ref(false)
+
+const showPopup = () => {
+  isPopupVisible.value = true
+}
+
+const hidePopup = () => {
+  isPopupVisible.value = false
+}
+
+const togglePopup = () => {
+  isPopupVisible.value = !isPopupVisible.value
+}
+
+const handleMouseOver = () => {
+  if (props.hoverable) {
+    showPopup()
+  }
+}
+
+const handleMouseLeave = () => {
+  if (props.hoverable) {
+    hidePopup()
+  }
+}
+
+const handleClick = () => {
+  if (!props.hoverable) {
+    togglePopup()
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -46,7 +88,7 @@ provide('itemClickHandle', (key: string) => {
       transform 0.25s;
   }
 
-  &:hover .popup {
+  .visible {
     @apply opacity-100 visible translate-y-0;
   }
 
