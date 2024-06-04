@@ -1,6 +1,5 @@
 <template>
   <div class="login-root-container">
-    <tool-bar absolute top-4 right-8></tool-bar>
     <div class="login-banner-container">
       <!-- NOTE: background-clip:text 和 其他有背景色的东西叠加在一起，再做个动画效果，safari就整不会了 -->
       <blur-ball v-if="!isSafari" absolute top="60%" left="60%" w="40%"></blur-ball>
@@ -20,6 +19,7 @@
       }}</neumorphism-button>
       <div v-if="error">{{ error }}</div>
     </div>
+    <tool-bar absolute top-4 right-8></tool-bar>
   </div>
 </template>
 <script setup lang="ts">
@@ -53,15 +53,38 @@ async function onLogin() {
   /* flex */
   @apply flex flex-row items-stretch justify-stretch;
   @apply p-8 min-h-screen;
+
+  @media (max-width: $xl4) {
+    @apply flex-col;
+  }
 }
 .login-banner-container {
   @apply relative overflow-hidden;
   @apply flex-1 flex flex-col justify-center items-center;
   @apply rounded-2 min-w-0 p-8;
   @include neumorphism-glass-shadow(0.25rem);
+
+  @media (max-width: $xl4) {
+    @apply grow-3;
+    @apply mt-10;
+
+    span {
+      @apply text-12;
+    }
+  }
+
+  @media (max-width: $xl) {
+    span {
+      @apply text-10;
+    }
+  }
 }
 .login-main-container {
   @apply flex-1 flex flex-col items-center justify-center;
+
+  @media (max-width: $xl4) {
+    @apply mt-10;
+  }
 
   #login-btn,
   .el-input,

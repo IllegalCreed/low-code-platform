@@ -95,10 +95,11 @@
   @include neumorphism-inner-shadow($deep);
 }
 
-@mixin neumorphism-card($deep) {
-  $halfdeep: math.div($deep, 2);
-
+@mixin neumorphism-card($deep, $bg: var(--page-background-color)) {
+  background-color: $bg;
   @apply border-1 border-solid;
   border-color: var(--border-color);
+
+  $halfdeep: math.div($deep, 2);
   box-shadow: 0 0 #{$deep * 2} #{$halfdeep} rgba(black, var(--shadow-outer-dark));
 }

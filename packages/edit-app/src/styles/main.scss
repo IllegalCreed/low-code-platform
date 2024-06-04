@@ -26,7 +26,8 @@ body {
   /* 移除 margin 和 padding */
   @apply m-0 p-0;
   /* 确保 body 至少与视口一样高 */
-  @apply min-h-screen;
+  @apply min-h-screen min-w-sm;
+  @apply relative;
   /* 设置基本的文本和背景颜色 */
   background-color: var(--page-background-color);
   color: var(--text-color);

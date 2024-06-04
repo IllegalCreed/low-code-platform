@@ -61,7 +61,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use 'src/styles/_neumorphism.scss' as *;`
+        additionalData: `@use 'src/styles/_neumorphism.scss' as *;@use 'src/styles/_tailwind-size.scss' as *;`
       }
     }
   }

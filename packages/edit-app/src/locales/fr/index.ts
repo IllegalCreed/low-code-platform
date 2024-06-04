@@ -2,8 +2,8 @@ export default {
   language: 'Français',
   slogan: {
     slogan1: 'Construire plus,\nCoder moins.',
-    slogan2: "Habiliter l'innovation,\nSimplifier le développement.",
-    slogan3: 'Libérer la créativité\nà chaque clic.'
+    slogan2: "Habiliter \nl'innovation,\nSimplifier le \ndéveloppement.",
+    slogan3: 'Libérer la \ncréativité\nà chaque clic.'
   },
   common: {
     login: 'Connexion',
