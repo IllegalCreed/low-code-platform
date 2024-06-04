@@ -71,7 +71,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (timeoutId !== null) {
-    clearTimeout(timeoutId) // 取消激活的定时器
+    clearTimeout(timeoutId) // 释放激活的定时器
   }
 })
 </script>

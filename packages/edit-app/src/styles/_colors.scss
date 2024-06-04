@@ -17,6 +17,11 @@
 
   --border-color: #{$neutral-300};
   --height-light-background-color: var(--page-background-color-darken);
+
+  --switch-active-background: #{$green-600};
+  --switch-inactive-background: var(--page-background-color-darken);
+  --switch-thumb-active-background: var(--page-background-color-lighten);
+  --switch-thumb-inactive-background: var(--page-background-color-lighten);
 }
 
 /* 深色模式自定义变量 */
@@ -30,10 +35,15 @@
 
   /* 原则是底色越深白色透明度越靠近0 黑色越接近0.5，两者之和最好为0.5*/
   --shadow-inner-light: 0.05;
-  // --shadow-inner-dark: calc(0.5 - var(--shadow-inner-light));
-  // --shadow-outer-light: calc(var(--shadow-inner-light) * 2);
-  // --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
+  --shadow-inner-dark: calc(0.5 - var(--shadow-inner-light));
+  --shadow-outer-light: calc(var(--shadow-inner-light) * 2);
+  --shadow-outer-dark: calc(var(--shadow-inner-dark) / 2);
 
   --border-color: #{$neutral-700};
   --height-light-background-color: var(--page-background-color-lighten);
+
+  --switch-active-background: #{$green-800};
+  --switch-inactive-background: var(--page-background-color-lighten);
+  --switch-thumb-active-background: var(--page-background-color-darken);
+  --switch-thumb-inactive-background: var(--page-background-color-darken);
 }

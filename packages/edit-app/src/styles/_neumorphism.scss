@@ -90,6 +90,11 @@
   }
 }
 
+@mixin neumorphism-switch($deep) {
+  @apply cursor-pointer select-none;
+  @include neumorphism-inner-shadow($deep);
+}
+
 @mixin neumorphism-card($deep) {
   $halfdeep: math.div($deep, 2);
 

@@ -8,7 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BlurBall: typeof import('./src/components/common/BlurBall.vue')['default']
-    DarkModeSwitch: typeof import('./src/components/common/DarkModeSwitch.vue')['default']
+    DarkModeSwitch: typeof import('./src/components/common/Toolbar/DarkModeSwitch.vue')['default']
     DropDown: typeof import('./src/components/common/DropDown/DropDown.vue')['default']
     DropDownItem: typeof import('./src/components/common/DropDown/DropDownItem.vue')['default']
     DropDownMenu: typeof import('./src/components/common/DropDown/DropDownMenu.vue')['default']
@@ -27,6 +27,8 @@ declare module 'vue' {
     'IIc:roundApi': typeof import('~icons/ic/round-api')['default']
     'IIc:roundDashboard': typeof import('~icons/ic/round-dashboard')['default']
     'IIc:sharpLanguage': typeof import('~icons/ic/sharp-language')['default']
+    'IIc:twotoneDarkMode': typeof import('~icons/ic/twotone-dark-mode')['default']
+    'IIc:twotoneLightMode': typeof import('~icons/ic/twotone-light-mode')['default']
     'IIconParkSolid:api': typeof import('~icons/icon-park-solid/api')['default']
     'IIon:language': typeof import('~icons/ion/language')['default']
     'IMaterialSymbols:database': typeof import('~icons/material-symbols/database')['default']
@@ -35,6 +37,7 @@ declare module 'vue' {
     'IMingcute:downLine': typeof import('~icons/mingcute/down-line')['default']
     'IMingcute:layoutFill': typeof import('~icons/mingcute/layout-fill')['default']
     NeumorphismButton: typeof import('./src/components/neumorphism/NeumorphismButton.vue')['default']
+    NeumorphismSwitch: typeof import('./src/components/neumorphism/NeumorphismSwitch.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToolBar: typeof import('./src/components/common/Toolbar/ToolBar.vue')['default']

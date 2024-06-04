@@ -1,6 +1,6 @@
 <template>
   <div class="login-root-container">
-    <tool-bar absolute top-4 right-4></tool-bar>
+    <tool-bar absolute top-4 right-8></tool-bar>
     <div class="login-banner-container">
       <!-- NOTE: background-clip:text 和 其他有背景色的东西叠加在一起，再做个动画效果，safari就整不会了 -->
       <blur-ball v-if="!isSafari" absolute top="60%" left="60%" w="40%"></blur-ball>
@@ -16,10 +16,9 @@
         clearable
       ></el-input>
       <neumorphism-button id="login-btn" @click="onLogin">{{
-        $t('common.login')
+        t('common.login')
       }}</neumorphism-button>
       <div v-if="error">{{ error }}</div>
-      <dark-mode-switch />
     </div>
   </div>
 </template>

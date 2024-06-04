@@ -11,9 +11,10 @@ export const setCssVar = (prop: string, val: any, dom = document.documentElement
   dom.style.setProperty(prop, val)
 }
 
-export const getCssVar = (prop: string, dom = document.documentElement): string => {
+export const getCssVar = (prop: string, dom: Element = document.documentElement): string => {
   return window.getComputedStyle(dom).getPropertyValue(prop).trim()
 }
+
 /**
  * 将十六进制颜色转换为 RGB 数组
  * @param hex - 十六进制颜色值
@@ -101,8 +102,7 @@ function hslToHex(h: number, s: number, l: number): string {
  * @param colorVarName - CSS变量名
  * @returns 灰度值（0到1之间）
  */
-export function calculateGrayscaleValue(colorVarName: string): number {
-  const cssColor = getCssVar(colorVarName)
+export function calculateGrayscaleValue(cssColor: string): number {
   const [r, g, b] = hexToRgb(cssColor)
   // 计算灰度值
   const grayscale = 0.299 * r + 0.587 * g + 0.114 * b
