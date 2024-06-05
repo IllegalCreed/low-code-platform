@@ -32,6 +32,31 @@ let isDeleting = false
 let lastTime = 0
 let timeoutId = 0
 
+// NOTE: 小技巧，如果不能直接watch prop，请把它装进一个computed里。
+const strings = computed(() => props.strings)
+watch(strings, () => {
+  clear()
+  type()
+})
+
+onMounted(() => {
+  type()
+})
+
+onBeforeUnmount(() => {
+  clear()
+})
+
+function clear() {
+  displayText.value = ''
+  isDeleting = false
+  charIndex = 0
+  lastTime = 0
+  if (timeoutId !== 0) {
+    clearTimeout(timeoutId) // 释放激活的定时器
+  }
+}
+
 function type() {
   // console.log('setTimeOut need to be released')
   const currentString = props.strings[stringArrayIndex % props.strings.length]
@@ -43,7 +68,7 @@ function type() {
   const nextInterval = Math.max(0, isDeleting ? lastTime - adjustedTime : adjustedTime - lastTime)
   lastTime = adjustedTime
 
-  /* NOTE: 这里需要用window里面的setTimeout，因为ts不知道你用的是哪个，会在build时候给你报错 */
+  /* NOTE: 这里需要用window.setTimeout，因为ts不知道你用的是node的还是哪个，会在build时候给你报错 */
   timeoutId = window.setTimeout(() => {
     displayText.value = isDeleting
       ? currentString.substring(0, --charIndex)
@@ -65,16 +90,6 @@ function type() {
     }
   }, nextInterval)
 }
-
-onMounted(() => {
-  type()
-})
-
-onBeforeUnmount(() => {
-  if (timeoutId !== null) {
-    clearTimeout(timeoutId) // 释放激活的定时器
-  }
-})
 </script>
 
 <style lang="scss" scoped>

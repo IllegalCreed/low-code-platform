@@ -6,6 +6,9 @@ export default {
     slogan3: '每一次點擊，\n釋放創造力。'
   },
   common: {
-    login: '登入'
+    login: '登入',
+    welcome: '歡迎',
+    account: '帳戶',
+    password: '密碼'
   }
 }

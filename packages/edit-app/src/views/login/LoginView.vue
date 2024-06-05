@@ -6,24 +6,25 @@
       <typed-text :strings="slogan" absolute top="25%" w="80%"></typed-text>
     </div>
     <div class="login-main-container">
+      <h1>{{ t('common.welcome') }}</h1>
       <neumorphism-input
         class="account-input"
         v-model="account"
-        placeholder="用户名"
+        :placeholder="t('common.account')"
         clearable
       ></neumorphism-input>
       <neumorphism-input
         class="account-input"
         v-model="password"
-        placeholder="密码"
+        :placeholder="t('common.password')"
         type="password"
         clearable
         show-password
       ></neumorphism-input>
+      <span class="error">{{ error }}</span>
       <neumorphism-button id="login-btn" @click="onLogin">{{
         t('common.login')
       }}</neumorphism-button>
-      <div v-if="error">{{ error }}</div>
     </div>
     <tool-bar absolute top-4 right-8></tool-bar>
   </div>
@@ -56,12 +57,11 @@ async function onLogin() {
 
 <style lang="scss" scoped>
 .login-root-container {
-  /* flex */
   @apply flex flex-row items-stretch justify-stretch;
   @apply p-8 min-h-screen;
 
   @media (max-width: $xl3) {
-    @apply flex-col;
+    @apply flex-col min-h-0;
   }
 }
 .login-banner-container {
@@ -71,11 +71,11 @@ async function onLogin() {
   @include neumorphism-glass-shadow(0.25rem);
 
   @media (max-width: $xl3) {
-    @apply grow-4;
+    @apply h-80 flex-none;
     @apply mt-10;
 
     span {
-      @apply text-10;
+      @apply text-8;
     }
   }
 }
@@ -83,12 +83,21 @@ async function onLogin() {
   @apply flex-1 flex flex-col items-center justify-center;
 
   @media (max-width: $xl3) {
-    @apply mt-10;
+    @apply mt-4 mb-80 flex-none;
   }
 
   #login-btn,
   .account-input {
-    @apply mb-5 w-72; // margin-bottom: 20px; width: 18rem;
+    @apply w-72;
   }
+
+  .account-input {
+    @apply mt-5;
+  }
+}
+
+.error {
+  color: $red-500;
+  @apply inline text-3 my-5 h-4;
 }
 </style>

@@ -7,5 +7,8 @@ export default {
   },
   common: {
     login: '登录',
+    welcome: '欢迎',
+    account: '账号',
+    password: '密码'
   }
 }

@@ -7,5 +7,8 @@ export default {
   },
   common: {
     login: 'Entrar',
+    welcome: 'Bem-vindo',
+    account: 'Conta',
+    password: 'Senha'
   }
 }

@@ -7,5 +7,8 @@ export default {
   },
   common: {
     login: '로그인',
+    welcome: '환영합니다',
+    account: '계정',
+    password: '비밀번호'
   }
 }
