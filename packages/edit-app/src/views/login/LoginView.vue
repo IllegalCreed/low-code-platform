@@ -7,17 +7,19 @@
     </div>
     <div class="login-main-container">
       <neumorphism-input
-        id="account-input"
+        class="account-input"
         v-model="account"
         placeholder="用户名"
+        clearable
       ></neumorphism-input>
-      <el-input
+      <neumorphism-input
+        class="account-input"
         v-model="password"
         placeholder="密码"
         type="password"
-        size="default"
         clearable
-      ></el-input>
+        show-password
+      ></neumorphism-input>
       <neumorphism-button id="login-btn" @click="onLogin">{{
         t('common.login')
       }}</neumorphism-button>
@@ -85,8 +87,7 @@ async function onLogin() {
   }
 
   #login-btn,
-  #account-input,
-  .el-input {
+  .account-input {
     @apply mb-5 w-72; // margin-bottom: 20px; width: 18rem;
   }
 }

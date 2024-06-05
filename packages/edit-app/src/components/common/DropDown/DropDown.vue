@@ -1,8 +1,8 @@
 <template>
   <div
-    @mouseover="handleMouseOver"
-    @mouseleave="handleMouseLeave"
-    @click="handleClick"
+    @mouseover="props.hoverable ? (isPopupVisible = true) : null"
+    @mouseleave="props.hoverable ? (isPopupVisible = false) : null"
+    @click="!props.hoverable ? (isPopupVisible = !isPopupVisible) : null"
     class="dropdown-root-container"
   >
     <div cursor-pointer>
@@ -36,36 +36,6 @@ provide('itemClickHandle', (key: string) => {
 })
 
 const isPopupVisible = ref(false)
-
-const showPopup = () => {
-  isPopupVisible.value = true
-}
-
-const hidePopup = () => {
-  isPopupVisible.value = false
-}
-
-const togglePopup = () => {
-  isPopupVisible.value = !isPopupVisible.value
-}
-
-const handleMouseOver = () => {
-  if (props.hoverable) {
-    showPopup()
-  }
-}
-
-const handleMouseLeave = () => {
-  if (props.hoverable) {
-    hidePopup()
-  }
-}
-
-const handleClick = () => {
-  if (!props.hoverable) {
-    togglePopup()
-  }
-}
 </script>
 
 <style lang="scss" scoped>

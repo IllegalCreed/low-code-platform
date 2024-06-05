@@ -1,12 +1,35 @@
 <template>
-  <div :class="['input-wrapper', isFocused ? 'focus' : null]">
+  <div
+    :class="['input-wrapper', isFocused ? 'focus' : null]"
+    @mouseover="isHover = true"
+    @mouseleave="isHover = false"
+  >
     <input
       @focusin="isFocused = true"
       @focusout="isFocused = false"
-      :type="props.type"
+      :type="currentType"
       :placeholder="props.placeholder"
       v-model="modelValue"
     />
+    <div class="icon-wrapper">
+      <i-mdi:close-circle-outline
+        v-if="props.clearable && modelValue && isHover"
+        class="clear-icon"
+        @click="clearInput"
+      ></i-mdi:close-circle-outline>
+      <template v-if="props.showPassword && props.type === 'password' && modelValue">
+        <i-mdi:eye-outline
+          v-if="passwordVisible"
+          class="toggle-password-icon"
+          @click="togglePassword"
+        ></i-mdi:eye-outline>
+        <i-mdi:eye-off-outline
+          v-else
+          class="toggle-password-icon"
+          @click="togglePassword"
+        ></i-mdi:eye-off-outline>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -15,21 +38,41 @@ const props = withDefaults(
   defineProps<{
     type?: string
     placeholder?: string
+    clearable?: boolean
+    showPassword?: boolean
   }>(),
   {
     type: 'text',
-    placeholder: ''
+    placeholder: '',
+    clearable: false,
+    showPassword: false
   }
 )
 
 const modelValue = defineModel<string>('modelValue')
-
 const isFocused = ref<boolean>(false)
+const isHover = ref<boolean>(false)
+const passwordVisible = ref<boolean>(false)
+
+const currentType = computed(() => {
+  if (props.showPassword && props.type === 'password' && passwordVisible.value) {
+    return 'text'
+  }
+  return props.type
+})
+
+function clearInput() {
+  modelValue.value = ''
+}
+
+function togglePassword() {
+  passwordVisible.value = !passwordVisible.value
+}
 </script>
 
 <style lang="scss" scoped>
 .input-wrapper {
-  @apply flex flex-row;
+  @apply flex flex-row
   @apply rounded-2 border-0;
   @include neumorphism-input(0.25rem);
 
@@ -46,6 +89,19 @@ const isFocused = ref<boolean>(false)
 
     &:focus {
       @apply outline-none;
+    }
+  }
+
+  .icon-wrapper {
+    @apply flex flex-row items-center h-8 space-x-2 mr-2;
+
+    .clear-icon,
+    .toggle-password-icon {
+      @apply cursor-pointer w-4 h-4 text-gray-500;
+
+      &:hover {
+        @apply text-gray-400;
+      }
     }
   }
 }

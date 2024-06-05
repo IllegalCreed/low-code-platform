@@ -1,7 +1,7 @@
 <template>
   <neumorphism-switch :activeColor="activeColor" :defaultValue="isDarkMode" @changed="useSetDark">
-    <i-ic:twotone-light-mode v-if="isDarkMode"></i-ic:twotone-light-mode>
-    <i-ic:twotone-dark-mode v-else></i-ic:twotone-dark-mode>
+    <i-ic:twotone-dark-mode v-if="isDarkMode" ></i-ic:twotone-dark-mode>
+    <i-ic:twotone-light-mode v-else></i-ic:twotone-light-mode>
   </neumorphism-switch>
 </template>
 
