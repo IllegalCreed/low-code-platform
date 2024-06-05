@@ -118,6 +118,7 @@ async function onLogin() {
   .logo {
     color: var(--text-active-color);
     @apply w-20 h-auto;
+    animation: rotateAnimation 5s linear infinite;
   }
 
   @media (max-width: $xl3) {
@@ -126,6 +127,17 @@ async function onLogin() {
     .logo {
       @apply w-8 h-auto;
     }
+  }
+}
+
+/* NOTE: 这里千万别用 @apply rotate-120 之类的写法，会变成瞬移，没有动画过度了，毕竟 rotate-120 != rotate(120deg) */
+@keyframes rotateAnimation {
+  0%,
+  95% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(120deg);
   }
 }
 </style>
