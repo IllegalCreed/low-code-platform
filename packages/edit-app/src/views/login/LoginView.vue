@@ -21,10 +21,18 @@
         clearable
         show-password
       ></neumorphism-input>
+      <div flex flex-row items-center justify-between mt-2 w-72>
+        <el-checkbox>记住密码</el-checkbox>
+        <el-link type="primary">忘记密码</el-link>
+      </div>
       <span class="error">{{ error }}</span>
       <neumorphism-button id="login-btn" @click="onLogin">{{
         t('common.login')
       }}</neumorphism-button>
+      <div flex flex-row items-center mt-4 w-72 text-3.5>
+        <span>还没有账号？</span>
+        <el-link type="primary">创建账号</el-link>
+      </div>
     </div>
     <tool-bar absolute top-4 right-8></tool-bar>
   </div>
@@ -98,6 +106,6 @@ async function onLogin() {
 
 .error {
   color: $red-500;
-  @apply inline text-3 my-5 h-4;
+  @apply inline text-3 mt-2 mb-4 h-4;
 }
 </style>
