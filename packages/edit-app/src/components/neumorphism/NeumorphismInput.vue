@@ -5,13 +5,14 @@
     @mouseleave="isHover = false"
   >
     <input
+      :id="inputId"
       @focusin="isFocused = true"
       @focusout="isFocused = false"
       :type="currentType"
       :placeholder="props.placeholder"
       v-model="modelValue"
     />
-    <div class="icon-wrapper">
+    <label class="icon-wrapper" :for="inputId">
       <i-mdi:close-circle-outline
         v-if="props.clearable && modelValue && isHover"
         class="clear-icon"
@@ -29,13 +30,16 @@
           @click="togglePassword"
         ></i-mdi:eye-off-outline>
       </template>
-    </div>
+    </label>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { v4 as uuidv4 } from 'uuid'
+
 const props = withDefaults(
   defineProps<{
+    id?: string
     type?: string
     placeholder?: string
     clearable?: boolean
@@ -48,6 +52,9 @@ const props = withDefaults(
     showPassword: false
   }
 )
+
+// 生成唯一 id 或使用提供的 id
+const inputId = computed(() => props.id || uuidv4())
 
 const modelValue = defineModel<string>('modelValue')
 const isFocused = ref<boolean>(false)
@@ -93,11 +100,11 @@ function togglePassword() {
   }
 
   .icon-wrapper {
-    @apply flex flex-row items-center h-8 space-x-2 mr-2;
+    @apply flex flex-row items-center h-8;
 
     .clear-icon,
     .toggle-password-icon {
-      @apply cursor-pointer w-4 h-4 text-gray-500;
+      @apply cursor-pointer w-4 h-4 text-gray-500 mr-2;
 
       &:hover {
         @apply text-gray-400;

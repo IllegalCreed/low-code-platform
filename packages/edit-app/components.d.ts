@@ -43,6 +43,8 @@ declare module 'vue' {
     'IMingcute:downLine': typeof import('~icons/mingcute/down-line')['default']
     'IMingcute:layoutFill': typeof import('~icons/mingcute/layout-fill')['default']
     NeumorphismButton: typeof import('./src/components/neumorphism/NeumorphismButton.vue')['default']
+    NeumorphismCheckbox: typeof import('./src/components/neumorphism/NeumorphismCheckbox.vue')['default']
+    NeumorphismCheckBox: typeof import('./src/components/neumorphism/NeumorphismCheckBox.vue')['default']
     NeumorphismInput: typeof import('./src/components/neumorphism/NeumorphismInput.vue')['default']
     NeumorphismSwitch: typeof import('./src/components/neumorphism/NeumorphismSwitch.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

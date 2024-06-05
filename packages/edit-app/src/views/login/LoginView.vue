@@ -24,8 +24,8 @@
         clearable
         show-password
       ></neumorphism-input>
-      <div flex flex-row items-center justify-between mt-2 w-72>
-        <el-checkbox>记住密码</el-checkbox>
+      <div flex flex-row items-center justify-between mt-3 w-70>
+        <neumorphism-checkbox>记住密码</neumorphism-checkbox>
         <el-link type="primary">忘记密码</el-link>
       </div>
       <span class="error">{{ error }}</span>
