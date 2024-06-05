@@ -91,7 +91,7 @@ async function onLogin() {
   @apply flex-1 flex flex-col items-center justify-center;
 
   @media (max-width: $xl3) {
-    @apply mt-4 mb-80 flex-none;
+    @apply mt-4 mb-10 flex-none;
   }
 
   #login-btn,
