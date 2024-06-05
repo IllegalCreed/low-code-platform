@@ -1,0 +1,17 @@
+<svg viewBox="280 280 465 465"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- 内部图标 -->
+    <g fill="currentColor">
+        <!-- 左括号 -->
+        <path d="M340 320 C 300 420, 300 600, 340 700" stroke="currentColor" stroke-width="40" fill="none" />
+        <!-- 右括号 -->
+        <path d="M684 320 C 724 420, 724 600, 684 700" stroke="currentColor" stroke-width="40" fill="none" />
+        <!-- 节点和连接线 -->
+        <circle cx="440" cy="440" r="40" fill="currentColor" />
+        <circle cx="584" cy="440" r="40" fill="currentColor" />
+        <circle cx="512" cy="584" r="40" fill="currentColor" />
+        <line x1="440" y1="440" x2="584" y2="440" stroke="currentColor" stroke-width="20" />
+        <line x1="440" y1="440" x2="512" y2="584" stroke="currentColor" stroke-width="20" />
+        <line x1="584" y1="440" x2="512" y2="584" stroke="currentColor" stroke-width="20" />
+    </g>
+</svg>

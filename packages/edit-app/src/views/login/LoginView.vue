@@ -6,7 +6,10 @@
       <typed-text :strings="slogan" absolute top="25%" w="80%"></typed-text>
     </div>
     <div class="login-main-container">
-      <h1>{{ t('common.welcome') }}</h1>
+      <div class="login-title">
+        <i-ion:logo-apple-ar class="logo"></i-ion:logo-apple-ar>
+        <h1>{{ t('common.welcome') }}</h1>
+      </div>
       <neumorphism-input
         class="account-input"
         v-model="account"
@@ -107,5 +110,22 @@ async function onLogin() {
 .error {
   color: $red-500;
   @apply inline text-3 mt-2 mb-4 h-4;
+}
+
+.login-title {
+  @apply flex flex-col items-center;
+
+  .logo {
+    color: var(--text-active-color);
+    @apply w-20 h-auto;
+  }
+
+  @media (max-width: $xl3) {
+    @apply flex-row space-x-4;
+
+    .logo {
+      @apply w-8 h-auto;
+    }
+  }
 }
 </style>

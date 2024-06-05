@@ -7,7 +7,7 @@ export default {
   },
   common: {
     login: 'Login',
-    welcome: 'Welcome',
+    welcome: 'Welcome back',
     account: 'Account',
     password: 'Password'
   }

@@ -16,6 +16,7 @@
   "dependencies": {
     "@vueuse/core": "^10.9.0",
     "axios": "^1.6.8",
+    "dompurify": "^3.1.5",
     "element-plus": "^2.7.3",
     "lodash-es": "^4.17.21",
     "moment": "^2.30.1",
