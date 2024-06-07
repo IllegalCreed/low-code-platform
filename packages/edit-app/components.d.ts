@@ -44,6 +44,7 @@ declare module 'vue' {
     NeumorphismButton: typeof import('./src/components/neumorphism/NeumorphismButton.vue')['default']
     NeumorphismCheckbox: typeof import('./src/components/neumorphism/NeumorphismCheckbox.vue')['default']
     NeumorphismInput: typeof import('./src/components/neumorphism/NeumorphismInput.vue')['default']
+    NeumorphismLink: typeof import('./src/components/neumorphism/NeumorphismLink.vue')['default']
     NeumorphismSwitch: typeof import('./src/components/neumorphism/NeumorphismSwitch.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

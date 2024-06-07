@@ -49,7 +49,6 @@
   $light-bg: nth($colors, 2);
 
   background-image: linear-gradient(to bottom right, $dark-bg, $light-bg);
-  // background-image: radial-gradient(circle at top left, $dark-bg, $light-bg);
   @include neumorphism-outer-shadow($deep);
 }
 
@@ -59,7 +58,6 @@
   $light-bg: nth($colors, 2);
 
   background-image: linear-gradient(to bottom right, $light-bg, $dark-bg);
-  // background-image: radial-gradient(circle at top left, $light-bg, $dark-bg);
   @include neumorphism-outer-shadow($deep);
 }
 
@@ -70,9 +68,9 @@
 
 @mixin neumorphism-glass-shadow(
   $deep,
+  $bg: var(--page-background-color),
   $blur: 0.5rem,
-  $alpha: 0.8,
-  $bg: var(--page-background-color)
+  $alpha: 0.8
 ) {
   $halfdeep: math.div($deep, 2);
 
@@ -108,8 +106,9 @@
   @include neumorphism-pressed($deep, $bg);
 }
 
-@mixin neumorphism-card($deep, $bg: var(--page-background-color)) {
-  background-color: $bg;
+@mixin neumorphism-card($deep, $bg: var(--page-background-color), $blur: 0.7rem, $alpha: 0.6) {
+  backdrop-filter: blur($blur);
+  background: rgba($bg, $alpha);
   @apply border-1 border-solid;
   border-color: var(--border-color);
 

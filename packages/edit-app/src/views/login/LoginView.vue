@@ -8,33 +8,33 @@
     <div class="login-main-container">
       <div class="login-title">
         <i-ion:logo-apple-ar class="logo"></i-ion:logo-apple-ar>
-        <h1>{{ t('common.welcome') }}</h1>
+        <h1>{{ t('account.welcome') }}</h1>
       </div>
       <neumorphism-input
         class="account-input"
         v-model="account"
-        :placeholder="t('common.account')"
+        :placeholder="t('account.account')"
         clearable
       ></neumorphism-input>
       <neumorphism-input
         class="account-input"
         v-model="password"
-        :placeholder="t('common.password')"
+        :placeholder="t('account.password')"
         type="password"
         clearable
         show-password
       ></neumorphism-input>
       <div flex flex-row items-center justify-between mt-3 w-70>
-        <neumorphism-checkbox>记住密码</neumorphism-checkbox>
-        <el-link type="primary">忘记密码</el-link>
+        <neumorphism-checkbox>{{ t('account.rememberMe') }}</neumorphism-checkbox>
+        <neumorphism-link href="/forgot">{{ t('account.forgotPassword') }}</neumorphism-link>
       </div>
       <span class="error">{{ error }}</span>
       <neumorphism-button id="login-btn" @click="onLogin">{{
-        t('common.login')
+        t('account.login')
       }}</neumorphism-button>
-      <div flex flex-row items-center mt-4 w-72 text-3.5>
-        <span>还没有账号？</span>
-        <el-link type="primary">创建账号</el-link>
+      <div flex flex-row items-center mt-4 w-72 text-3 space-x-2>
+        <span>{{ t('account.dontHaveAccount') }}</span>
+        <neumorphism-link href="/register">{{ t('account.signUp') }}</neumorphism-link>
       </div>
     </div>
     <tool-bar absolute top-4 right-8></tool-bar>

@@ -1,14 +1,8 @@
+import slogan from './slogan'
+import account from './account'
+
 export default {
   language: 'Русский',
-  slogan: {
-    slogan1: 'Строить больше,\nКодировать меньше.',
-    slogan2: 'Способствовать \nинновациям,\nУпрощать \nразработку.',
-    slogan3: 'Освободить \nтворчество\nс каждым кликом.'
-  },
-  common: {
-    login: 'Вход',
-    welcome: 'Добро пожаловать',
-    account: 'Учетная запись',
-    password: 'Пароль'
-  }
+  slogan,
+  account
 }

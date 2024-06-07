@@ -5,6 +5,9 @@
   --text-color: #{$neutral-600};
   --text-active-color: #{$indigo-500};
 
+  --link-color: #{$indigo-500};
+  --link-hover-color: #{$indigo-400};
+
   --page-background-color: #{$slate-200};
   --page-background-color-lighten: #{$slate-100};
   --page-background-color-darken: #{$slate-300};
@@ -28,6 +31,9 @@
 :root.dark {
   --text-color: #{$neutral-400};
   --text-active-color: #{$indigo-600};
+
+  --link-color: #{$indigo-600};
+  --link-hover-color: #{$indigo-500};
 
   --page-background-color: #{$slate-800};
   --page-background-color-lighten: #{$slate-700};

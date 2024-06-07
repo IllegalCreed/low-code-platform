@@ -6,9 +6,24 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
+      path: '/playground',
+      name: 'playground',
+      component: () => import('../views/playground/index.vue')
+    },
+    {
       path: '/login',
       name: 'login',
       component: LoginView
+    },
+    {
+      path: '/forgot',
+      name: 'forgot',
+      component: () => import('../views/login/ForgotView.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/login/RegisterView.vue')
     },
     {
       path: '/',
@@ -86,11 +101,11 @@ const router = createRouter({
               name: 'export',
               component: () => import('../views/app/file/FileExportView.vue'),
               meta: { belong: 'export', needToNaviagte: false }
-            },
+            }
           ]
         }
       ]
-    },
+    }
   ]
 })
 
