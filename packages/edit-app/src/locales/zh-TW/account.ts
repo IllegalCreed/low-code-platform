@@ -5,7 +5,7 @@ export default {
   password: '密碼',
   rememberMe: '記住登入状态',
   forgotPassword: '忘記密碼',
-  dontHaveAccount: "沒有帳戶？",
+  dontHaveAccount: '沒有帳戶？',
   signUp: '註冊',
   signIn: '登入',
   register: '註冊'

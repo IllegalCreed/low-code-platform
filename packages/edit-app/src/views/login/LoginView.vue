@@ -8,7 +8,7 @@
     <div class="login-main-container">
       <div class="login-title">
         <i-ion:logo-apple-ar class="logo"></i-ion:logo-apple-ar>
-        <h1>{{ t('account.welcome') }}</h1>
+        <span text-8 my-4 font-semibold>{{ t('account.welcome') }}</span>
       </div>
       <neumorphism-input
         class="account-input"
@@ -26,7 +26,9 @@
       ></neumorphism-input>
       <div flex flex-row items-center justify-between mt-3 w-70>
         <neumorphism-checkbox>{{ t('account.rememberMe') }}</neumorphism-checkbox>
-        <neumorphism-link href="/forgot">{{ t('account.forgotPassword') }}</neumorphism-link>
+        <neumorphism-link @click="router.push({ name: 'forgot' })">{{
+          t('account.forgotPassword')
+        }}</neumorphism-link>
       </div>
       <span class="error">{{ error }}</span>
       <neumorphism-button id="login-btn" @click="onLogin">{{
@@ -34,7 +36,9 @@
       }}</neumorphism-button>
       <div flex flex-row items-center mt-4 w-72 text-3 space-x-2>
         <span>{{ t('account.dontHaveAccount') }}</span>
-        <neumorphism-link href="/register">{{ t('account.signUp') }}</neumorphism-link>
+        <neumorphism-link @click="router.push({ name: 'register' })">{{
+          t('account.signUp')
+        }}</neumorphism-link>
       </div>
     </div>
     <tool-bar absolute top-4 right-8></tool-bar>
@@ -58,7 +62,7 @@ async function onLogin() {
   try {
     const result = await authStore.login(account.value, password.value)
     if (result) {
-      router.push({ name: 'home' }) // 导航到主页
+      router.push({ name: 'home' })
     }
   } catch (err: any) {
     error.value = err.message
@@ -109,7 +113,7 @@ async function onLogin() {
 
 .error {
   color: $red-500;
-  @apply inline text-3 mt-2 mb-4 h-4;
+  @apply inline text-3 my-3 h-4;
 }
 
 .login-title {

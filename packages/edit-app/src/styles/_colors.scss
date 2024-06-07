@@ -4,6 +4,7 @@
 :root {
   --text-color: #{$neutral-600};
   --text-active-color: #{$indigo-500};
+  --text-ignore-color: #{$neutral-400};
 
   --link-color: #{$indigo-500};
   --link-hover-color: #{$indigo-400};
@@ -31,6 +32,7 @@
 :root.dark {
   --text-color: #{$neutral-400};
   --text-active-color: #{$indigo-600};
+  --text-ignore-color: #{$neutral-500};
 
   --link-color: #{$indigo-600};
   --link-hover-color: #{$indigo-500};
