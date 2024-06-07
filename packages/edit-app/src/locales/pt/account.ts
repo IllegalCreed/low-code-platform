@@ -8,5 +8,10 @@ export default {
   dontHaveAccount: 'Não tem uma conta?',
   signUp: 'Inscrever-se',
   signIn: 'Entrar',
-  register: 'Registrar'
+  register: 'Registrar',
+  createAccount: 'crie uma conta para continuar',
+  email: 'Email',
+  agree: 'você concorda com nossos Termos e',
+  privacy: 'Política de Privacidade',
+  haveAccount: 'já tem uma conta.'
 }

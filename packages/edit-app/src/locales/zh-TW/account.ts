@@ -8,5 +8,10 @@ export default {
   dontHaveAccount: '沒有帳戶？',
   signUp: '註冊',
   signIn: '登入',
-  register: '註冊'
+  register: '註冊',
+  createAccount: '創建帳戶以繼續',
+  email: '電子郵件',
+  agree: '您同意我們的條款和',
+  privacy: '隱私政策',
+  haveAccount: '已有帳戶。'
 }

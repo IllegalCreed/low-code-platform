@@ -8,5 +8,10 @@ export default {
   dontHaveAccount: "Vous n'avez pas de compte ?",
   signUp: "S'inscrire",
   signIn: 'Se connecter',
-  register: 'Enregistrer'
+  register: 'Enregistrer',
+  createAccount: 'créez un compte pour continuer',
+  email: 'Email',
+  agree: 'vous acceptez nos Conditions et',
+  privacy: 'Politique de confidentialité',
+  haveAccount: 'avez déjà un compte.'
 }

@@ -28,7 +28,7 @@ const relAttribute = computed(() => {
 <style lang="scss" scoped>
 .link {
   color: var(--link-color);
-  @apply text-3 cursor-pointer;
+  @apply text-3 cursor-pointer no-underline;
 
   &:hover {
     color: var(--link-hover-color);

@@ -31,7 +31,7 @@ const handleChange = () => {
 
 <style lang="scss" scoped>
 .checkbox-label {
-  @apply flex items-center cursor-pointer select-none space-x-2;
+  @apply flex items-start cursor-pointer select-none space-x-2;
 }
 
 .checkbox-box {
@@ -50,7 +50,7 @@ const handleChange = () => {
 }
 
 .checkbox-text {
-  @apply text-3;
+  @apply text-3 leading-4;
 }
 
 input[type='checkbox'] {

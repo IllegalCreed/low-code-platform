@@ -34,7 +34,7 @@
       <neumorphism-button id="login-btn" @click="onLogin">{{
         t('account.login')
       }}</neumorphism-button>
-      <div flex flex-row items-center mt-4 w-72 text-3 space-x-2>
+      <div flex flex-row items-center mt-4 w-70 text-3 space-x-2>
         <span>{{ t('account.dontHaveAccount') }}</span>
         <neumorphism-link @click="router.push({ name: 'register' })">{{
           t('account.signUp')
