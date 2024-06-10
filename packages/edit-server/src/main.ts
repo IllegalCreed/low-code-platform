@@ -11,6 +11,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // 全局启用验证管道
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
+  await app.listen(6100);
 }
 bootstrap();
