@@ -1,0 +1,25 @@
+name: Deploy Edit Server
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/edit-server/**"
+
+jobs:
+  deploy-edit-server:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.head_commit.message, 'update edit-server')}}
+    steps:
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+      - name: Deploy to Server
+        env:
+          HOST: ${{ secrets.SERVER_HOST }}
+          USER: ${{ secrets.SERVER_USER }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USER@$HOST "cd /root/server/edit-server && git pull && npm install && npm run build && pm2 restart edit-server"

@@ -1,0 +1,42 @@
+name: Deploy Edit App
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/edit-app/**"
+
+jobs:
+  deploy-edit-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: |
+          pnpm install
+          pnpm --filter edit-app install
+
+      - name: Build edit-app
+        run: |
+          cd packages/edit-app
+          pnpm build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          publish_dir: ./packages/edit-app/dist
