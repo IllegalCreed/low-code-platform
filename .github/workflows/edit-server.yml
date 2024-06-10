@@ -10,7 +10,6 @@ on:
 jobs:
   deploy-edit-server:
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.head_commit.message, 'update edit-server')}}
     steps:
       - name: Set up SSH key
         run: |
