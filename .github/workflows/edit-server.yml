@@ -21,4 +21,4 @@ jobs:
           HOST: ${{ secrets.SERVER_HOST }}
           USER: ${{ secrets.SERVER_USER }}
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USER@$HOST "cd /root/server/edit-server && git pull && npm install && npm run build && pm2 restart edit-server"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $USER@$HOST "cd /root/server/low-code-platform && git pull && cd packages/edit-server && npm install && npm run build && pm2 restart edit-server"
