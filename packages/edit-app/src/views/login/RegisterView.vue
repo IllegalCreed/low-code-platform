@@ -61,7 +61,7 @@ const { t } = useI18n()
 
 const serverError = ref('')
 
-const { values, meta, handleSubmit, isSubmitting, errors, defineField } = useForm({
+const { handleSubmit, isSubmitting, defineField } = useForm({
   validationSchema: toTypedSchema(
     yup.object({
       username: yup.string().required().default(''),
