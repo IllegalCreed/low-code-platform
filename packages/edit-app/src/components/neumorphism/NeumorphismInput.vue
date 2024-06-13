@@ -1,24 +1,27 @@
 <template>
   <div
-    :class="['input-wrapper', isFocused ? 'focus' : null]"
+    :class="['input-wrapper', isFocused ? 'focus' : null, hasError ? 'error' : null]"
     @mouseover="isHover = true"
     @mouseleave="isHover = false"
+    :data-error="error"
   >
+    <!--NOTE: 这里添加blur事件是为了触发vee-validate的验证，否则他只监听根元素的blur事件 -->
     <input
       :id="inputId"
       @focusin="isFocused = true"
       @focusout="isFocused = false"
       :type="currentType"
-      :placeholder="props.placeholder"
+      :placeholder="placeholder"
       v-model="modelValue"
+      @blur="emit('blur')"
     />
     <label class="icon-wrapper" :for="inputId">
       <i-mdi:close-circle-outline
-        v-if="props.clearable && modelValue && isHover"
+        v-if="clearable && modelValue && isHover"
         class="clear-icon"
         @click="clearInput"
       ></i-mdi:close-circle-outline>
-      <template v-if="props.showPassword && props.type === 'password' && modelValue">
+      <template v-if="showPassword && type === 'password' && modelValue">
         <i-mdi:eye-outline
           v-if="passwordVisible"
           class="toggle-password-icon"
@@ -37,6 +40,10 @@
 <script lang="ts" setup>
 import { v4 as uuidv4 } from 'uuid'
 
+const emit = defineEmits<{
+  blur:[]
+}>()
+
 const props = withDefaults(
   defineProps<{
     id?: string
@@ -44,12 +51,14 @@ const props = withDefaults(
     placeholder?: string
     clearable?: boolean
     showPassword?: boolean
+    error?: string
   }>(),
   {
     type: 'text',
     placeholder: '',
     clearable: false,
-    showPassword: false
+    showPassword: false,
+    error: ''
   }
 )
 
@@ -67,6 +76,13 @@ const currentType = computed(() => {
   }
   return props.type
 })
+const hasError = computed(() => {
+  if (props.error) {
+    return true
+  } else {
+    return false
+  }
+})
 
 function clearInput() {
   modelValue.value = ''
@@ -79,8 +95,9 @@ function togglePassword() {
 
 <style lang="scss" scoped>
 .input-wrapper {
-  @apply flex flex-row
+  @apply flex flex-row relative;
   @apply rounded-2 border-0;
+  @apply transition-shadow;
   @include neumorphism-input(0.25rem);
 
   &:hover {
@@ -89,6 +106,10 @@ function togglePassword() {
 
   &.focus:hover {
     @include neumorphism-all-shadow(0.25rem);
+  }
+
+  &.error {
+    @include neumorphism-error-shadow(0.25rem);
   }
 
   input {
@@ -115,5 +136,11 @@ function togglePassword() {
 
 .focus {
   @include neumorphism-all-shadow(0.25rem);
+}
+
+.error::after {
+  content: attr(data-error);
+  color: $red-500;
+  @apply absolute text-3 top-full left-1 pt-1;
 }
 </style>

@@ -8,15 +8,18 @@
 
     <neumorphism-input
       class="account-input"
-      v-model="account"
+      v-model="username"
       :placeholder="t('account.account')"
       clearable
+      v-bind="usernameAttrs"
     ></neumorphism-input>
     <neumorphism-input
       class="account-input"
       v-model="email"
       :placeholder="t('account.email')"
+      type="email"
       clearable
+      v-bind="emailAttrs"
     ></neumorphism-input>
     <neumorphism-input
       class="account-input"
@@ -25,15 +28,16 @@
       type="password"
       clearable
       show-password
+      v-bind="passwordAttrs"
     ></neumorphism-input>
-    <div flex flex-row items-center mt-4 w-70 text-3>
-      <neumorphism-checkbox
+    <div flex flex-row items-center mb-7 w-70 text-3>
+      <neumorphism-checkbox v-model="isAgree" v-bind="isAgreeAttrs"
         >{{ t('account.agree') }}
         <neumorphism-link ml-1 href="/policy">{{ t('account.privacy') }}</neumorphism-link>
       </neumorphism-checkbox>
     </div>
-    <span class="error">{{ error }}</span>
-    <neumorphism-button id="register-btn" @click="onRegister">{{
+    <span class="error-message">{{ serverError }}</span>
+    <neumorphism-button id="register-btn" @click="onRegister" :loading="isSubmitting">{{
       t('account.register')
     }}</neumorphism-button>
 
@@ -49,16 +53,65 @@
 </template>
 
 <script setup lang="ts">
+import * as yup from 'yup'
+import { useUserStore } from '@/stores/modules/user'
+import { toTypedSchema } from '@vee-validate/yup'
+const { register: registerAction } = useUserStore()
 const { t } = useI18n()
 
-const account = ref('')
-const email = ref('')
-const password = ref('')
-const error = ref('')
+const serverError = ref('')
+
+const { values, meta, handleSubmit, isSubmitting, errors, defineField } = useForm({
+  validationSchema: toTypedSchema(
+    yup.object({
+      username: yup.string().required().default(''),
+      email: yup.string().email().required().default(''),
+      password: yup.string().required().default(''),
+      isAgree: yup.boolean().oneOf([true], 'You must agree to the terms').default(false)
+    })
+  )
+})
+const [username, usernameAttrs] = defineField('username', (state) => ({
+  props: {
+    error: state.errors[0]
+  },
+  validateOnModelUpdate: state.errors.length > 0
+}))
+const [password, passwordAttrs] = defineField('password', (state) => ({
+  /** NOTE: 这个函数调用非常频繁
+   * 用来给你的组件附加更多props或者attrs
+   * 当然你直接写到组件上也OK，但是这不composables
+   * 我们只想让验证逻辑集中管理，让组件看起来和单独使用无异 */
+  props: {
+    error: state.errors[0]
+  },
+  validateOnModelUpdate: state.errors.length > 0
+}))
+const [email, emailAttrs] = defineField('email', (state) => ({
+  props: {
+    error: state.errors[0]
+  },
+  validateOnModelUpdate: state.errors.length > 0
+}))
+const [isAgree, isAgreeAttrs] = defineField('isAgree', {
+  props: (state) => {
+    return { error: state.errors[0] }
+  }
+})
 
 const router = useRouter()
 
-function onRegister() {}
+const onRegister = handleSubmit(async (values) => {
+  try {
+    await registerAction({
+      username: values.username,
+      password: values.password,
+      email: values.email
+    })
+  } catch (err) {
+    // Handle registration error
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -79,7 +132,7 @@ function onRegister() {}
   }
 
   .description {
-    @apply text-3 mb-6;
+    @apply text-3 mb-7;
     color: var(--text-ignore-color);
   }
 
@@ -89,12 +142,16 @@ function onRegister() {}
   }
 
   .account-input {
-    @apply mt-5;
+    @apply mb-7;
   }
 }
 
-.error {
+.error-message {
   color: $red-500;
-  @apply inline text-3 my-3 h-4;
+  @apply inline text-3 h-4;
+}
+
+span {
+  display: block;
 }
 </style>

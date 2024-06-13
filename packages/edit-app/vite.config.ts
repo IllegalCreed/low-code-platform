@@ -15,6 +15,9 @@ Object.assign(process.env, loadEnv(process.env.NODE_ENV as string, process.cwd()
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.VITE_BASE_URL || '/',
+  server: {
+    port: 5200
+  },
   plugins: [
     vue(),
     VueDevTools(),
@@ -25,6 +28,7 @@ export default defineConfig({
         'vue',
         'vue-router',
         '@vueuse/core',
+        'vee-validate',
         // 自定义导入
         {
           // 包导入

@@ -26,6 +26,11 @@
   --switch-inactive-background: var(--page-background-color-darken);
   --switch-thumb-active-background: var(--page-background-color-lighten);
   --switch-thumb-inactive-background: var(--page-background-color-lighten);
+
+  --error-shadow-color: #{$red-300};
+
+  --disabled-color: #{$white};
+  --disabled-background: #{$gray-300};
 }
 
 /* 深色模式自定义变量 */
@@ -54,4 +59,9 @@
   --switch-inactive-background: var(--page-background-color-lighten);
   --switch-thumb-active-background: var(--page-background-color-darken);
   --switch-thumb-inactive-background: var(--page-background-color-darken);
+
+  --error-shadow-color: #{$red-800};
+
+  --disabled-color: #{$gray-300};
+  --disabled-background: #{$gray-600};
 }

@@ -2,16 +2,15 @@ import { Body, Controller, Post, Get, Query } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { ApiResponse } from '../common/interfaces/api-response.interface';
-import { UserInterface } from './interfaces/user.interface';
 
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
 
   @Post()
   async register(
     @Body() createUserDto: CreateUserDto,
-  ): Promise<ApiResponse<UserInterface>> {
+  ): Promise<ApiResponse<string>> {
     return this.userService.register(createUserDto);
   }
 

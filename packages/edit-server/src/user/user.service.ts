@@ -1,8 +1,9 @@
+import * as crypto from 'crypto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
-import { UserInterface } from './interfaces/user.interface';
+import { UserActivation } from './entities/userActivation.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { hashPassword } from '../common/utils/security';
 import { ApiResponse } from '../common/interfaces/api-response.interface';
@@ -10,17 +11,25 @@ import {
   createErrorResponse,
   createSuccessResponse,
 } from '../common/utils/response';
+import { MailerService } from 'src/mailer/mailer.service';
 
 @Injectable()
 export class UserService {
   constructor(
+    private dataSource: DataSource,
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    @InjectRepository(UserActivation)
+    private userActivationRepository: Repository<UserActivation>,
+    private mailerService: MailerService,
   ) {}
 
-  async register(
-    createUserDto: CreateUserDto,
-  ): Promise<ApiResponse<UserInterface>> {
+  private generateActivationToken(): string {
+    // 使用 crypto 生成安全的随机令牌
+    return crypto.randomBytes(16).toString('hex');
+  }
+
+  async register(createUserDto: CreateUserDto): Promise<ApiResponse<string>> {
     const { username, password, email } = createUserDto;
 
     if (!(await this.isUsernameAvailable(username))) {
@@ -31,25 +40,35 @@ export class UserService {
     }
 
     const hashedPassword = await hashPassword(password);
-    const newUser = this.userRepository.create({
-      username,
-      email,
-      password: hashedPassword,
-      isActive: true,
-    });
+
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
 
     try {
-      const savedUser = await this.userRepository.save(newUser);
-      const userResponse: UserInterface = {
-        id: savedUser.id,
-        username: savedUser.username,
-        email: savedUser.email,
-        isActive: savedUser.isActive,
-        createdAt: savedUser.createdAt,
-        updatedAt: savedUser.updatedAt,
-        lastLogin: savedUser.lastLogin,
-      };
-      return createSuccessResponse(userResponse);
+      const newUser = new User();
+      newUser.username = username;
+      newUser.email = email;
+      newUser.password = hashedPassword;
+      newUser.isActive = false;
+
+      const savedUser = await queryRunner.manager.save(newUser);
+
+      // Generate activation token
+      const activationToken = this.generateActivationToken();
+      const userActivation = new UserActivation();
+      userActivation.user = savedUser;
+      userActivation.token = activationToken;
+      userActivation.expireTime = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours validity
+
+      await queryRunner.manager.save(userActivation);
+
+      await queryRunner.commitTransaction();
+
+      // Send activation email
+      await this.mailerService.sendActivationEmail(email, activationToken);
+
+      return createSuccessResponse('REGISTRATION_SUCCEED');
     } catch (error) {
       return createErrorResponse('REGISTRATION_FAILED');
     }

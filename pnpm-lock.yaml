@@ -10,6 +10,9 @@ importers:
 
   packages/edit-app:
     dependencies:
+      '@vee-validate/yup':
+        specifier: ^4.13.1
+        version: 4.13.1(vue@3.4.27(typescript@5.4.5))
       '@vueuse/core':
         specifier: ^10.9.0
         version: 10.9.0(vue@3.4.27(typescript@5.4.5))
@@ -34,6 +37,9 @@ importers:
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
+      vee-validate:
+        specifier: ^4.13.1
+        version: 4.13.1(vue@3.4.27(typescript@5.4.5))
       vue:
         specifier: ^3.4.27
         version: 3.4.27(typescript@5.4.5)
@@ -43,6 +49,9 @@ importers:
       vue-router:
         specifier: ^4.3.2
         version: 4.3.2(vue@3.4.27(typescript@5.4.5))
+      yup:
+        specifier: ^1.4.0
+        version: 1.4.0
     devDependencies:
       '@iconify/json':
         specifier: ^2.2.211
@@ -155,6 +164,9 @@ importers:
       mysql2:
         specifier: ^3.9.7
         version: 3.9.7
+      nodemailer:
+        specifier: ^6.9.13
+        version: 6.9.13
       reflect-metadata:
         specifier: ^0.2.0
         version: 0.2.2
@@ -183,6 +195,9 @@ importers:
       '@types/node':
         specifier: ^20.3.1
         version: 20.12.12
+      '@types/nodemailer':
+        specifier: ^6.4.15
+        version: 6.4.15
       '@types/supertest':
         specifier: ^6.0.0
         version: 6.0.2
@@ -1156,6 +1171,9 @@ packages:
   '@types/node@20.12.12':
     resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
 
+  '@types/nodemailer@6.4.15':
+    resolution: {integrity: sha512-0EBJxawVNjPkng1zm2vopRctuWVCxk34JcIlRuXSf54habUWdz1FB7wHDqOqvDa8Mtpt0Q3LTXQkAs2LNyK5jQ==}
+
   '@types/qs@6.9.15':
     resolution: {integrity: sha512-uXHQKES6DQKKCLh441Xv/dwxOq1TVS3JPUMlEqoEglvlhR6Mxnlew/Xq/LRVHpLyk7iK3zODe1qYHIMltO7XGg==}
 
@@ -1405,6 +1423,9 @@ packages:
     resolution: {integrity: sha512-+gBjyT5z/aZgPIZxpUbiXyOt1diY9YQfIJStOhBG0MP6daMdDX78SnDuUq/zKMk9EJuZ3FxhbZF5dYSD4bhJmw==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
+
+  '@vee-validate/yup@4.13.1':
+    resolution: {integrity: sha512-XS057kHcf4uFew708haHVxCjqJ9OYXV57KmOj/R9fnuh76i54F79DCRzm4FDAevOJzkuo7rNBYOSTplY4iXPrQ==}
 
   '@vitejs/plugin-vue@5.0.4':
     resolution: {integrity: sha512-WS3hevEszI6CEVEx28F8RjTX97k3KsrcY6kvTg7+Whm5y3oYvcqzVeGCU3hxSAn4uY2CLCkeokkGKpoctccilQ==}
@@ -3319,6 +3340,10 @@ packages:
   node-releases@2.0.14:
     resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
 
+  nodemailer@6.9.13:
+    resolution: {integrity: sha512-7o38Yogx6krdoBf3jCAqnIN4oSQFx+fMa0I7dK1D+me9kBxx12D+/33wSb+fhOCtIxvYJ+4x4IMEhmhCKfAiOA==}
+    engines: {node: '>=6.0.0'}
+
   nopt@7.2.1:
     resolution: {integrity: sha512-taM24ViiimT/XntxbPyJQzCG+p4EKOpgD3mxFwW38mGjVUrfERQOeY4EDHjdnptttfHuHQXFx+lTP08Q+mLa/w==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -3562,6 +3587,9 @@ packages:
   prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
     engines: {node: '>= 6'}
+
+  property-expr@2.0.6:
+    resolution: {integrity: sha512-SVtmxhRE/CGkn3eZY1T6pC8Nln6Fr/lu1mKSgRud0eC73whjGfoAogbn78LkD8aFL0zz3bAFerKSnOl7NlErBA==}
 
   proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
@@ -3998,6 +4026,9 @@ packages:
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
+  tiny-case@1.0.3:
+    resolution: {integrity: sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==}
+
   tinybench@2.8.0:
     resolution: {integrity: sha512-1/eK7zUnIklz4JUUlL+658n58XO2hHLQfSk1Zf2LKieUjxidN16eKFEoDEfjHc3ohofSSqK3X5yO6VGb6iW8Lw==}
 
@@ -4027,6 +4058,9 @@ packages:
   toidentifier@1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
+
+  toposort@2.0.2:
+    resolution: {integrity: sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==}
 
   totalist@3.0.1:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
@@ -4121,6 +4155,14 @@ packages:
   type-fest@0.21.3:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
+
+  type-fest@2.19.0:
+    resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
+    engines: {node: '>=12.20'}
+
+  type-fest@4.20.0:
+    resolution: {integrity: sha512-MBh+PHUHHisjXf4tlx0CFWoMdjx8zCMLJHOjnV1prABYZFHqtFOyauCIK2/7w4oIfwkF8iNhLtnJEfVY2vn3iw==}
+    engines: {node: '>=16'}
 
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
@@ -4323,6 +4365,11 @@ packages:
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
+
+  vee-validate@4.13.1:
+    resolution: {integrity: sha512-JAlUWTBHg0z66n+v66mrtE9IC1xmVCggzpyc7UXCNkizVok8Zgt1VAVjobSxA/0N19Zn6v6hRfjoYciYH/Z11Q==}
+    peerDependencies:
+      vue: ^3.4.26
 
   vite-hot-client@0.2.3:
     resolution: {integrity: sha512-rOGAV7rUlUHX89fP2p2v0A2WWvV3QMX2UYq0fRqsWSvFvev4atHWqjwGoKaZT1VTKyLGk533ecu3eyd0o59CAg==}
@@ -4616,6 +4663,9 @@ packages:
   yocto-queue@1.0.0:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
+
+  yup@1.4.0:
+    resolution: {integrity: sha512-wPbgkJRCqIf+OHyiTBQoJiP5PFuAXaWiJK6AmYkzQAh5/c2K9hzSApBZG5wV9KoKSePF7sAxmNSvh/13YHkFDg==}
 
 snapshots:
 
@@ -5681,6 +5731,10 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
+  '@types/nodemailer@6.4.15':
+    dependencies:
+      '@types/node': 20.12.12
+
   '@types/qs@6.9.15': {}
 
   '@types/range-parser@1.2.7': {}
@@ -6048,6 +6102,14 @@ snapshots:
       vite: 5.2.11(@types/node@20.12.12)(sass@1.77.2)(terser@5.31.0)
     transitivePeerDependencies:
       - rollup
+
+  '@vee-validate/yup@4.13.1(vue@3.4.27(typescript@5.4.5))':
+    dependencies:
+      type-fest: 4.20.0
+      vee-validate: 4.13.1(vue@3.4.27(typescript@5.4.5))
+      yup: 1.4.0
+    transitivePeerDependencies:
+      - vue
 
   '@vitejs/plugin-vue@5.0.4(vite@5.2.11(@types/node@20.12.12)(sass@1.77.2)(terser@5.31.0))(vue@3.4.27(typescript@5.4.5))':
     dependencies:
@@ -8336,6 +8398,8 @@ snapshots:
 
   node-releases@2.0.14: {}
 
+  nodemailer@6.9.13: {}
+
   nopt@7.2.1:
     dependencies:
       abbrev: 2.0.0
@@ -8563,6 +8627,8 @@ snapshots:
     dependencies:
       kleur: 3.0.3
       sisteransi: 1.0.5
+
+  property-expr@2.0.6: {}
 
   proto-list@1.2.4: {}
 
@@ -9000,6 +9066,8 @@ snapshots:
 
   through@2.3.8: {}
 
+  tiny-case@1.0.3: {}
+
   tinybench@2.8.0: {}
 
   tinypool@0.8.4: {}
@@ -9019,6 +9087,8 @@ snapshots:
       is-number: 7.0.0
 
   toidentifier@1.0.1: {}
+
+  toposort@2.0.2: {}
 
   totalist@3.0.1: {}
 
@@ -9109,6 +9179,10 @@ snapshots:
   type-fest@0.20.2: {}
 
   type-fest@0.21.3: {}
+
+  type-fest@2.19.0: {}
+
+  type-fest@4.20.0: {}
 
   type-is@1.6.18:
     dependencies:
@@ -9299,6 +9373,12 @@ snapshots:
   validator@13.12.0: {}
 
   vary@1.1.2: {}
+
+  vee-validate@4.13.1(vue@3.4.27(typescript@5.4.5)):
+    dependencies:
+      '@vue/devtools-api': 6.6.1
+      type-fest: 4.20.0
+      vue: 3.4.27(typescript@5.4.5)
 
   vite-hot-client@0.2.3(vite@5.2.11(@types/node@20.12.12)(sass@1.77.2)(terser@5.31.0)):
     dependencies:
@@ -9627,3 +9707,10 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.0.0: {}
+
+  yup@1.4.0:
+    dependencies:
+      property-expr: 2.0.6
+      tiny-case: 1.0.3
+      toposort: 2.0.2
+      type-fest: 2.19.0

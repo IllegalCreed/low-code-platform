@@ -23,6 +23,14 @@
     inset -#{$deep} -#{$deep} #{$deep * 2} rgba(white, var(--shadow-inner-light));
 }
 
+@mixin neumorphism-error-shadow($deep) {
+  $halfdeep: math.div($deep, 2);
+  box-shadow:
+    0 0 #{$deep * 2} #{$halfdeep} var(--error-shadow-color),
+    inset #{$deep} #{$deep} #{$deep * 2} rgba(black, var(--shadow-inner-dark)),
+    inset -#{$deep} -#{$deep} #{$deep * 2} rgba(white, var(--shadow-inner-light));
+}
+
 @function generate-dark-light-bg($bg) {
   $dark-bg: null;
   $light-bg: null;
@@ -48,7 +56,7 @@
   $dark-bg: nth($colors, 1);
   $light-bg: nth($colors, 2);
 
-  background-image: linear-gradient(to bottom right, $dark-bg, $light-bg);
+  background-color: linear-gradient(to bottom right, $dark-bg, $light-bg);
   @include neumorphism-outer-shadow($deep);
 }
 
@@ -57,7 +65,7 @@
   $dark-bg: nth($colors, 1);
   $light-bg: nth($colors, 2);
 
-  background-image: linear-gradient(to bottom right, $light-bg, $dark-bg);
+  background-color: linear-gradient(to bottom right, $light-bg, $dark-bg);
   @include neumorphism-outer-shadow($deep);
 }
 

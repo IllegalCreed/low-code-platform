@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
+import { UserActivation } from './userActivation.entity';
 
 @Entity()
 export class User {
@@ -52,4 +53,7 @@ export class User {
       "The timestamp of the user's last login. Can be null if the user has never logged in.",
   })
   lastLogin: Date | null;
+
+  @OneToOne(() => UserActivation, (userActivation) => userActivation.user)
+  userActivation: UserActivation;
 }
