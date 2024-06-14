@@ -54,9 +54,8 @@
 
 <script setup lang="ts">
 import * as yup from 'yup'
-import { useUserStore } from '@/stores/modules/user'
+import { registerAPI } from '@/apis/user'
 import { toTypedSchema } from '@vee-validate/yup'
-const { register: registerAction } = useUserStore()
 const { t } = useI18n()
 
 const serverError = ref('')
@@ -103,7 +102,7 @@ const router = useRouter()
 
 const onRegister = handleSubmit(async (values) => {
   try {
-    await registerAction({
+    await registerAPI({
       username: values.username,
       password: values.password,
       email: values.email

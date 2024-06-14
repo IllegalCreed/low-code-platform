@@ -2,6 +2,8 @@ import { Body, Controller, Post, Get, Query } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { ApiResponse } from '../common/interfaces/api-response.interface';
+import { EmailDto } from './dto/email-validate.dto';
+import { UsernameDto } from './dto/username-validate.dto';
 
 @Controller('user')
 export class UserController {
@@ -16,15 +18,15 @@ export class UserController {
 
   @Get('check-username')
   async checkUsername(
-    @Query('username') username: string,
+    @Query() usernameDto: UsernameDto,
   ): Promise<ApiResponse<{ available: boolean }>> {
-    return this.userService.isUsernameAvailable(username);
+    return this.userService.isUsernameAvailable(usernameDto.username);
   }
 
   @Get('check-email')
   async checkEmail(
-    @Query('email') email: string,
+    @Query() emailDto: EmailDto,
   ): Promise<ApiResponse<{ available: boolean }>> {
-    return this.userService.isEmailAvailable(email);
+    return this.userService.isEmailAvailable(emailDto.email);
   }
 }

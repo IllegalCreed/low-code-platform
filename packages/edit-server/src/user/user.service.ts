@@ -32,10 +32,10 @@ export class UserService {
   async register(createUserDto: CreateUserDto): Promise<ApiResponse<string>> {
     const { username, password, email } = createUserDto;
 
-    if (!(await this.isUsernameAvailable(username))) {
+    if (!(await this.isUsernameAvailable(username)).data.available) {
       return createErrorResponse('USERNAME_TAKEN');
     }
-    if (!(await this.isEmailAvailable(email))) {
+    if (!(await this.isEmailAvailable(email)).data.available) {
       return createErrorResponse('EMAIL_TAKEN');
     }
 

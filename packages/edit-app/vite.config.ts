@@ -16,7 +16,14 @@ Object.assign(process.env, loadEnv(process.env.NODE_ENV as string, process.cwd()
 export default defineConfig({
   base: process.env.VITE_BASE_URL || '/',
   server: {
-    port: 5200
+    port: 5200,
+    proxy: {
+      '/dev-api': {
+        target: 'http://localhost:6100',
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/dev-api/, '')
+      }
+    }
   },
   plugins: [
     vue(),

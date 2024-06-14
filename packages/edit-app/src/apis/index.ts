@@ -84,6 +84,17 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(error)
     }
 
+    /** NOTE: 这里只会根据状态码显示基本信息，
+     * 详细错误信息不会在界面显示。
+     * 请通过开发者工具调试获取， 
+     * 因为普通用户无需关心网络类错误。
+     * 虽然DTO参数验证失败也会返回400之类的错误，
+     * 但这些也统统属于BUG了，不是业务上的错误。
+     * 也就是计划外的错误。
+     * 总结来说计划内的错误是可以给用户展示的，
+     * 或者说这些不算是错误。
+     * 比如用户名存在这种，是可以预见到的。
+     * */
     const { status } = error.response
     const message = httpStatusMessages[status] || `未知错误: ${status}`
 
