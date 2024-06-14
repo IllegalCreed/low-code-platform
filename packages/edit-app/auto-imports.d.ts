@@ -6,6 +6,7 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const ElMessageBox: typeof import('element-plus/es')['ElMessageBox']
   const FieldContextKey: typeof import('vee-validate')['FieldContextKey']
   const FormContextKey: typeof import('vee-validate')['FormContextKey']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']

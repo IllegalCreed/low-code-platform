@@ -1,3 +1,7 @@
+import type { RemovableRef } from "@vueuse/core"
+
+const storedLocale: RemovableRef<string> = useLocalStorage('app-locale', 'en')
+
 function getLanguageArray() {
   const { messages } = useI18n()
 
@@ -9,6 +13,12 @@ function getLanguageArray() {
 
 export function useLanguage() {
   const { t, locale } = useI18n()
+
+  locale.value = storedLocale.value;
+
+  watch(locale, (newLocale) => {
+    storedLocale.value = newLocale;
+  });
 
   const currentLanguage = computed(() => {
     return { key: locale.value, content: t('language') }

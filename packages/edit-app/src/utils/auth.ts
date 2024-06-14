@@ -1,6 +1,4 @@
-import { useLocalStorage, type RemovableRef } from '@vueuse/core'
-import { ElMessageBox } from 'element-plus'
-import router from '@/router'
+import type { RemovableRef } from '@vueuse/core'
 
 /**
  * 使用 VueUse 的 useLocalStorage 来管理本地存储中的 token
@@ -15,6 +13,7 @@ export const token: RemovableRef<string> = useLocalStorage('token', '')
  * @function reset
  */
 export const reset = () => {
+  const router = useRouter()
   token.value = '' // 清空 token
   router.replace('/login') // 重定向到登录页面
 }

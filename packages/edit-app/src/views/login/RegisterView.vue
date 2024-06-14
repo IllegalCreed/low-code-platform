@@ -56,6 +56,7 @@
 import * as yup from 'yup'
 import { useUserStore } from '@/stores/modules/user'
 import { toTypedSchema } from '@vee-validate/yup'
+import { useValidateCatch } from '@/composables/validateCatch'
 
 const { t } = useI18n()
 const {
@@ -63,6 +64,7 @@ const {
   usernameCheck: usernameCheckAction,
   emailCheck: emailCheckAction
 } = useUserStore()
+const { checkCatch } = useValidateCatch()
 const serverError = ref('')
 
 const { handleSubmit, isSubmitting, defineField } = useForm({
@@ -70,32 +72,50 @@ const { handleSubmit, isSubmitting, defineField } = useForm({
     yup.object({
       username: yup
         .string()
-        .required('Username is required')
+        .required(() => t('accountValidate.usernameRequiredError'))
         .test(
           'unique-username',
-          'Username is already taken',
-          async (value) => await usernameCheckAction(value)
+          () => t('accountValidate.usernameUniqueError'),
+          async (value, context) => {
+            /** NOTE: yup的test会在任何一个字段触发验证时执行全部字段的test，
+             * 有的解释是有可能该字段的自定义验证方法可能依赖其他字段，
+             * 所以这里为了性能考虑我们需要排除一些无效调用
+             * 原本打算在value变化并且其他验证都通过时再进行异步操作，
+             * 但目前明显办不到，因为所有验证是同时进行的。
+             */
+            return await checkCatch<string>(value, context.path, () => {
+              return usernameCheckAction(value)
+            })
+          }
         )
         .default(''),
       email: yup
         .string()
-        .email('Email must be a valid email')
-        .required('Email is required')
+        .email(() => t('accountValidate.emailValidError'))
+        .required(() => t('accountValidate.emailRequiredError'))
         .test(
           'unique-email',
-          'Email is already registered',
-          async (value) => await emailCheckAction(value)
+          () => t('accountValidate.emailUniqueError'),
+          async (value, context) => {
+            return await checkCatch<string>(value, context.path, () => {
+              return emailCheckAction(value)
+            })
+          }
         )
         .default(''),
       password: yup
         .string()
-        .required('Password is required')
-        .matches(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-          'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).'
-        )
+        .required(() => t('accountValidate.passwordRequiredError'))
+        .matches(/.{8,}/, () => t('accountValidate.passwordLengthError'))
+        .matches(/[A-Z]/, () => t('accountValidate.passwordUppercaseError'))
+        .matches(/[a-z]/, () => t('accountValidate.passwordLowercaseError'))
+        .matches(/\d/, () => t('accountValidate.passwordNumberError'))
+        .matches(/[@$!%*?&]/, () => t('accountValidate.passwordSpecialCharError'))
         .default(''),
-      isAgree: yup.boolean().oneOf([true], 'You must agree to the terms').default(false)
+      isAgree: yup
+        .boolean()
+        .oneOf([true], () => t('accountValidate.termsAgreementError'))
+        .default(false)
     })
   )
 })
@@ -103,7 +123,7 @@ const [username, usernameAttrs] = defineField('username', (state) => ({
   props: {
     error: state.errors[0]
   },
-  validateOnModelUpdate: state.errors.length > 0
+  validateOnModelUpdate: false
 }))
 const [password, passwordAttrs] = defineField('password', (state) => ({
   /** NOTE: 这个函数调用非常频繁
@@ -119,7 +139,7 @@ const [email, emailAttrs] = defineField('email', (state) => ({
   props: {
     error: state.errors[0]
   },
-  validateOnModelUpdate: state.errors.length > 0
+  validateOnModelUpdate: false
 }))
 const [isAgree, isAgreeAttrs] = defineField('isAgree', {
   props: (state) => {
@@ -160,7 +180,7 @@ const onRegister = handleSubmit(async (values) => {
   }
 
   .description {
-    @apply text-3 mb-7;
+    @apply text-3 mb-8;
     color: var(--text-ignore-color);
   }
 
@@ -170,7 +190,7 @@ const onRegister = handleSubmit(async (values) => {
   }
 
   .account-input {
-    @apply mb-7;
+    @apply mb-8;
   }
 }
 

@@ -9,9 +9,9 @@ export default {
   signUp: 'Sign up',
   signIn: 'Sign in',
   register: 'Register',
-  createAccount: 'create an account to continue',
+  createAccount: 'Create an account to continue',
   email: 'Email',
-  agree: "you're agree to our Terms and",
+  agree: "You agree to our Terms and",
   privacy: 'Privacy Policy',
-  haveAccount: 'already have an account.'
+  haveAccount: 'Already have an account?',
 }
