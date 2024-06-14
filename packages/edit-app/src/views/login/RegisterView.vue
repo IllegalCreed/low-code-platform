@@ -54,18 +54,47 @@
 
 <script setup lang="ts">
 import * as yup from 'yup'
-import { registerAPI } from '@/apis/user'
+import { useUserStore } from '@/stores/modules/user'
 import { toTypedSchema } from '@vee-validate/yup'
-const { t } = useI18n()
 
+const { t } = useI18n()
+const {
+  register: registerAction,
+  usernameCheck: usernameCheckAction,
+  emailCheck: emailCheckAction
+} = useUserStore()
 const serverError = ref('')
 
 const { handleSubmit, isSubmitting, defineField } = useForm({
   validationSchema: toTypedSchema(
     yup.object({
-      username: yup.string().required().default(''),
-      email: yup.string().email().required().default(''),
-      password: yup.string().required().default(''),
+      username: yup
+        .string()
+        .required('Username is required')
+        .test(
+          'unique-username',
+          'Username is already taken',
+          async (value) => await usernameCheckAction(value)
+        )
+        .default(''),
+      email: yup
+        .string()
+        .email('Email must be a valid email')
+        .required('Email is required')
+        .test(
+          'unique-email',
+          'Email is already registered',
+          async (value) => await emailCheckAction(value)
+        )
+        .default(''),
+      password: yup
+        .string()
+        .required('Password is required')
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+          'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).'
+        )
+        .default(''),
       isAgree: yup.boolean().oneOf([true], 'You must agree to the terms').default(false)
     })
   )
@@ -102,7 +131,7 @@ const router = useRouter()
 
 const onRegister = handleSubmit(async (values) => {
   try {
-    await registerAPI({
+    await registerAction({
       username: values.username,
       password: values.password,
       email: values.email
