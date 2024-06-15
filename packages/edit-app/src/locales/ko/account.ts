@@ -13,5 +13,9 @@ export default {
   email: '이메일',
   agree: '당사의 이용 약관 및',
   privacy: '개인정보 보호정책에 동의합니다',
-  haveAccount: '이미 계정이 있습니다.'
+  haveAccount: '이미 계정이 있습니다?',
+  activateAccount: '계정 활성화',
+  resendActivationEmail: '활성화 이메일 재전송',
+  send: '보내기',
+  alreadyActivated: '이미 활성화 되었나요?'
 }

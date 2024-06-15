@@ -19,6 +19,18 @@ export const ErrorCodes = {
     code: 5,
     msg: 'Registration failed due to unexpected error.',
   },
+  RESEND_ACTIVATION_EMAIL_FAILED: {
+    code: 6,
+    msg: 'Failed to resend activation email due to an unexpected error.',
+  },
+  ALREADY_ACTIVATED: {
+    code: 7,
+    msg: 'The account is already activated.',
+  },
+  USER_NOT_FOUND: {
+    code: 8,
+    msg: 'No such user with the given email.',
+  },
   // 可以根据需要添加更多错误码
 };
 

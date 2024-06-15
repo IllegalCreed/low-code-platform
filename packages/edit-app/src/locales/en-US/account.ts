@@ -11,7 +11,11 @@ export default {
   register: 'Register',
   createAccount: 'Create an account to continue',
   email: 'Email',
-  agree: "You agree to our Terms and",
+  agree: 'You agree to our Terms and',
   privacy: 'Privacy Policy',
   haveAccount: 'Already have an account?',
+  activateAccount: 'Activate account',
+  resendActivationEmail: 'Resend Activation Email',
+  send: 'Send',
+  alreadyActivated: 'Already activated?'
 }

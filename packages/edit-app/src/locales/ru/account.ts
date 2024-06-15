@@ -13,5 +13,9 @@ export default {
   email: 'Электронная почта',
   agree: 'вы соглашаетесь с нашими Условиями и',
   privacy: 'Политика конфиденциальности',
-  haveAccount: 'уже есть аккаунт.'
+  haveAccount: 'уже есть аккаунт.',
+  activateAccount: 'Активировать аккаунт',
+  resendActivationEmail: 'Повторно отправить письмо для активации',
+  send: 'Отправить',
+  alreadyActivated: 'Уже активирован?'
 }

@@ -13,5 +13,9 @@ export default {
   email: 'E-mail',
   agree: 'u gaat akkoord met onze Voorwaarden en',
   privacy: 'Privacybeleid',
-  haveAccount: 'heeft al een account.'
+  haveAccount: 'heeft al een account.',
+  activateAccount: 'Account activeren',
+  resendActivationEmail: 'Activatie-e-mail opnieuw versturen',
+  send: 'Versturen',
+  alreadyActivated: 'Al geactiveerd?'
 }

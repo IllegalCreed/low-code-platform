@@ -1,4 +1,12 @@
-import { Body, Controller, Post, Get, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  Get,
+  Query,
+  HttpStatus,
+  HttpCode,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { ApiResponse } from '../common/interfaces/api-response.interface';
@@ -10,6 +18,7 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post()
+  @HttpCode(HttpStatus.OK)
   async register(
     @Body() createUserDto: CreateUserDto,
   ): Promise<ApiResponse<string>> {
@@ -28,5 +37,13 @@ export class UserController {
     @Query() emailDto: EmailDto,
   ): Promise<ApiResponse<{ available: boolean }>> {
     return this.userService.isEmailAvailable(emailDto.email);
+  }
+
+  @Post('resend-activation-email')
+  @HttpCode(HttpStatus.OK)
+  async resendActivationEmail(
+    @Body() emailDto: EmailDto,
+  ): Promise<ApiResponse<any>> {
+    return this.userService.resendActivationEmail(emailDto.email);
   }
 }

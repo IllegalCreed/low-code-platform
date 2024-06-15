@@ -13,5 +13,9 @@ export default {
   email: 'E-post',
   agree: 'du godkänner våra Villkor och',
   privacy: 'Integritetspolicy',
-  haveAccount: 'har redan ett konto.'
+  haveAccount: 'har redan ett konto.',
+  activateAccount: 'Aktivera konto',
+  resendActivationEmail: 'Skicka aktiveringsmejl igen',
+  send: 'Skicka',
+  alreadyActivated: 'Redan aktiverat?'
 }

@@ -10,7 +10,9 @@ import { tansParams } from '@/utils/params'
 import httpStatusMessages from './httpStatusMessages'
 import { relogin, token } from '@/utils/auth'
 
-const showErrorMessage = import.meta.env.VITE_SHOW_ERROR as boolean
+const showErrorMessage = import.meta.env.VITE_SHOW_ERROR === 'true'
+
+console.log(showErrorMessage == false)
 
 const axiosInstance: AxiosInstance = axios.create({
   timeout: 60000,
@@ -70,8 +72,10 @@ axiosInstance.interceptors.response.use(
     }
 
     if (code !== 0) {
-      showErrorMessage &&
+      if (showErrorMessage) {
+        console.log('????????????')
         ElMessage.error({ message: response.data.msg || '业务错误', duration: 5 * 1000 })
+      }
       return Promise.reject(response.data)
     } else {
       return Promise.resolve(response.data)
@@ -79,14 +83,15 @@ axiosInstance.interceptors.response.use(
   },
   (error: AxiosError) => {
     if (!error.response) {
-      showErrorMessage &&
+      if (showErrorMessage) {
         ElMessage.error({ message: '网络错误或后端接口连接异常', duration: 5 * 1000 })
+      }
       return Promise.reject(error)
     }
 
     /** NOTE: 这里只会根据状态码显示基本信息，
      * 详细错误信息不会在界面显示。
-     * 请通过开发者工具调试获取， 
+     * 请通过开发者工具调试获取，
      * 因为普通用户无需关心网络类错误。
      * 虽然DTO参数验证失败也会返回400之类的错误，
      * 但这些也统统属于BUG了，不是业务上的错误。
@@ -102,7 +107,9 @@ axiosInstance.interceptors.response.use(
       relogin()
       return Promise.reject(error)
     }
-    showErrorMessage && ElMessage.error({ message, duration: 5 * 1000 })
+    if (showErrorMessage) {
+      ElMessage.error({ message, duration: 5 * 1000 })
+    }
     return Promise.reject(error)
   }
 )

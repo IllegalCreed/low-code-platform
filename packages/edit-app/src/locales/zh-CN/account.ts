@@ -13,5 +13,9 @@ export default {
   email: '邮箱',
   agree: '同意我们的条款和',
   privacy: '隐私政策',
-  haveAccount: '已经有账号了'
+  haveAccount: '已经有账号了。',
+  activateAccount: '激活账号',
+  resendActivationEmail: '重新发送激活邮件',
+  send: '发送',
+  alreadyActivated: '已经激活？'
 }

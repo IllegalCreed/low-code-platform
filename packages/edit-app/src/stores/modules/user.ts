@@ -1,4 +1,4 @@
-import { registerAPI, usernameCheckAPI, emailCheckAPI } from '@/apis/user'
+import { registerAPI, usernameCheckAPI, emailCheckAPI, resendActiveEmailAPI } from '@/apis/user'
 import type { UserInterface } from '@/apis/user/types'
 import { defineStore } from 'pinia'
 
@@ -29,5 +29,14 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  return { register, usernameCheck, emailCheck }
+  async function resendActiveEmail(email: string): Promise<boolean> {
+    try {
+      const res = await resendActiveEmailAPI(email)
+      return res.data.available
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  return { register, usernameCheck, emailCheck, resendActiveEmail }
 })

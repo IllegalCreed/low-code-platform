@@ -13,5 +13,9 @@ export default {
   email: 'Email',
   agree: 'vous acceptez nos Conditions et',
   privacy: 'Politique de confidentialité',
-  haveAccount: 'avez déjà un compte.'
+  haveAccount: 'avez déjà un compte ?',
+  activateAccount: 'Activer le compte',
+  resendActivationEmail: "Renvoyer l'email d'activation",
+  send: 'Envoyer',
+  alreadyActivated: 'Déjà activé ?'
 }

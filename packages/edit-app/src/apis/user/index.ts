@@ -36,3 +36,16 @@ export const emailCheckAPI = (email: string): Promise<any> => {
     false
   )
 }
+
+export const resendActiveEmailAPI = (email: string): Promise<any> => {
+  const data = {
+    email
+  }
+  return request.post(
+    {
+      url: '/user/resend-activation-email',
+      data
+    },
+    false
+  )
+}

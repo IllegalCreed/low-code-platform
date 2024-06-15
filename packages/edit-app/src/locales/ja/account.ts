@@ -13,5 +13,9 @@ export default {
   email: 'メール',
   agree: '当社の利用規約および',
   privacy: 'プライバシーポリシーに同意する',
-  haveAccount: 'すでにアカウントをお持ちです。'
+  haveAccount: 'すでにアカウントをお持ちです？',
+  activateAccount: 'アカウントを有効化',
+  resendActivationEmail: '認証メールを再送信',
+  send: '送信',
+  alreadyActivated: 'すでに有効化されていますか？'
 }

@@ -2,6 +2,8 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
 import { mailerConfig } from './mailer.config';
+import { createSuccessResponse } from 'src/common/utils/response';
+import { ApiResponse } from 'src/common/interfaces/api-response.interface';
 
 @Injectable()
 export class MailerService {
@@ -11,7 +13,10 @@ export class MailerService {
     this.transporter = nodemailer.createTransport(mailerConfig);
   }
 
-  async sendActivationEmail(to: string, token: string): Promise<void> {
+  async sendActivationEmail(
+    to: string,
+    token: string,
+  ): Promise<ApiResponse<string>> {
     // 发送激活邮件的实现
     const activationLink = `${process.env.FRONTEND_DOMAIN}/activate?token=${token}`;
     const mailOptions = {
@@ -25,6 +30,8 @@ export class MailerService {
     // 发送邮件
     const info = await this.transporter.sendMail(mailOptions);
     console.log('Message sent: %s', info.messageId);
+
+    return createSuccessResponse('SEND_EMAIL_SUCCEED');
   }
 
   //   async sendPasswordResetEmail(to: string, token: string): Promise<void> {

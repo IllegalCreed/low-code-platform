@@ -13,5 +13,9 @@ export default {
   email: 'البريد الإلكتروني',
   agree: 'أنت توافق على شروطنا و',
   privacy: 'سياسة الخصوصية',
-  haveAccount: 'لديك حساب بالفعل.'
+  haveAccount: 'لديك حساب بالفعل.',
+  activateAccount: 'تفعيل الحساب',
+  resendActivationEmail: 'إعادة إرسال بريد التفعيل',
+  send: 'إرسال',
+  alreadyActivated: 'هل تم التفعيل بالفعل؟'
 }

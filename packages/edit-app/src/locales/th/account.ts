@@ -13,5 +13,9 @@ export default {
   email: 'อีเมล',
   agree: 'คุณยอมรับข้อกำหนดและ',
   privacy: 'นโยบายความเป็นส่วนตัวของเรา',
-  haveAccount: 'มีบัญชีอยู่แล้ว.'
+  haveAccount: 'มีบัญชีอยู่แล้ว.',
+  activateAccount: 'เปิดใช้งานบัญชี',
+  resendActivationEmail: 'ส่งอีเมล์เปิดใช้งานอีกครั้ง',
+  send: 'ส่ง',
+  alreadyActivated: 'เปิดใช้งานแล้ว?'
 }

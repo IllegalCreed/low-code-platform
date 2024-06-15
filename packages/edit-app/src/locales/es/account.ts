@@ -4,7 +4,7 @@ export default {
   account: 'Cuenta',
   password: 'Contraseña',
   rememberMe: 'Recordar contraseña',
-  forgotPassword: '¿Olvidó su contraseña?',
+  forgotPassword: 'Olvidó su contraseña',
   dontHaveAccount: '¿No tienes cuenta?',
   signUp: 'Registrarse',
   signIn: 'Iniciar sesión',
@@ -13,5 +13,9 @@ export default {
   email: 'Correo electrónico',
   agree: 'acepta nuestros Términos y',
   privacy: 'Política de privacidad',
-  haveAccount: 'ya tiene una cuenta.'
+  haveAccount: '¿ya tiene una cuenta?',
+  activateAccount: 'Activar cuenta',
+  resendActivationEmail: 'Reenviar correo de activación',
+  send: 'Enviar',
+  alreadyActivated: '¿Ya activado?'
 }

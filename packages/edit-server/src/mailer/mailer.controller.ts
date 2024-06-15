@@ -9,8 +9,7 @@ export class MailerController {
   @Post('/send-activation')
   @HttpCode(HttpStatus.OK)
   async sendActivationEmail(@Body() body: { to: string; token: string }) {
-    await this.mailerService.sendActivationEmail(body.to, body.token);
-    return { message: 'Activation email sent successfully' };
+    return this.mailerService.sendActivationEmail(body.to, body.token);
   }
 
   // @Post('/send-password-reset')

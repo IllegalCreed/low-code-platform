@@ -13,5 +13,9 @@ export default {
   email: '電子郵件',
   agree: '您同意我們的條款和',
   privacy: '隱私政策',
-  haveAccount: '已有帳戶。'
+  haveAccount: '已有帳戶。',
+  activateAccount: '啟動帳戶',
+  resendActivationEmail: '重新發送啟動電郵',
+  send: '發送',
+  alreadyActivated: '已經啟動？'
 }

@@ -89,4 +89,38 @@ export class UserService {
     const available = !user;
     return createSuccessResponse({ available });
   }
+
+  async resendActivationEmail(email: string): Promise<ApiResponse<string>> {
+    // 查询用户但不限制激活状态
+    const user = await this.userRepository.findOne({ where: { email } });
+
+    // 用户不存在
+    if (!user) {
+      return createErrorResponse('USER_NOT_FOUND');
+    }
+
+    // 用户已激活
+    if (user.isActive) {
+      return createErrorResponse('ALREADY_ACTIVATED');
+    }
+
+    try {
+      const activationToken = this.generateActivationToken();
+      const newUserActivation = this.userActivationRepository.create({
+        user,
+        token: activationToken,
+        expireTime: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours validity
+      });
+
+      /** NOTE: save方法可以根据我传给他的主键自己决定是INSERT还是UPDATE */
+      await this.userActivationRepository.save(newUserActivation);
+
+      // Send activation email
+      await this.mailerService.sendActivationEmail(email, activationToken);
+
+      return createSuccessResponse('RESEND_ACTIVATION_EMAIL_SUCCEED');
+    } catch (error) {
+      return createErrorResponse('RESEND_ACTIVATION_EMAIL_FAILED');
+    }
+  }
 }

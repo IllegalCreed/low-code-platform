@@ -31,6 +31,11 @@ const router = createRouter({
       component: () => import('../views/login/ActivateView.vue')
     },
     {
+      path: '/resend',
+      name: 'resend',
+      component: () => import('../views/login/ResendView.vue')
+    },
+    {
       path: '/',
       name: 'home',
       component: HomeView,

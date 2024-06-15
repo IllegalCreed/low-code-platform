@@ -48,6 +48,11 @@
       }}</neumorphism-link>
     </div>
 
+    <div flex flex-row items-center mt-2 w-70 text-3 space-x-2>
+      <span>已经注册但未激活？</span>
+      <neumorphism-link @click="router.push({ name: 'resend' })"> 去激活 </neumorphism-link>
+    </div>
+
     <tool-bar absolute top-4 right-8></tool-bar>
   </div>
 </template>
@@ -174,8 +179,9 @@ const onRegister = handleSubmit(async (values) => {
   .title {
     @apply text-8 mb-1 font-semibold;
 
+    // NOTE：margin-top属性如果设置为百分比，则针对的是容器的宽度
     @media (max-width: $xl3) {
-      @apply mt-1/3;
+      @apply mt-1/4;
     }
   }
 
@@ -197,9 +203,5 @@ const onRegister = handleSubmit(async (values) => {
 .error-message {
   color: $red-500;
   @apply inline text-3 h-4;
-}
-
-span {
-  display: block;
 }
 </style>
