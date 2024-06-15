@@ -41,7 +41,7 @@ import { useUserStore } from '@/stores/modules/user'
 const { t } = useI18n()
 const router = useRouter()
 const route = useRoute()
-const { active: activeAction } = useUserStore()
+const { activate: activateAction } = useUserStore()
 
 const hasToken = ref(false)
 const activating = ref(true)
@@ -59,7 +59,7 @@ onMounted(() => {
 async function activateAccount(token: string) {
   try {
     activating.value = true
-    await activeAction(token)
+    await activateAction(token)
     activating.value = false
     activateSucceed.value = true
   } catch (error) {

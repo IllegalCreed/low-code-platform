@@ -50,7 +50,7 @@ export const resendActiveEmailAPI = (email: string): Promise<any> => {
   )
 }
 
-export const activeAPI = (token: string): Promise<any> => {
+export const activateAPI = (token: string): Promise<any> => {
   const data = {
     token
   }

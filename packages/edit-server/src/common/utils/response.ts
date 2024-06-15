@@ -1,14 +1,13 @@
 import { ApiResponse } from '../interfaces/api-response.interface';
-import { ErrorCodes, ErrorCode } from '../constants/error-codes';
+import { ErrorCodeMessages, ErrorCode } from '../constants/error-codes';
 
 export function createErrorResponse<T = any>(
   errorCode: ErrorCode,
   data?: T,
 ): ApiResponse<T> {
-  const error = ErrorCodes[errorCode];
   return {
-    code: error.code,
-    msg: error.msg,
+    code: errorCode,
+    msg: ErrorCodeMessages[errorCode],
     data,
   };
 }

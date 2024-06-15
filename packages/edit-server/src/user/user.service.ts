@@ -12,6 +12,7 @@ import {
   createSuccessResponse,
 } from '../common/utils/response';
 import { MailerService } from 'src/mailer/mailer.service';
+import { ErrorCode } from 'src/common/constants/error-codes';
 
 @Injectable()
 export class UserService {
@@ -33,10 +34,10 @@ export class UserService {
     const { username, password, email } = createUserDto;
 
     if (!(await this.isUsernameAvailable(username)).data.available) {
-      return createErrorResponse('USERNAME_TAKEN');
+      return createErrorResponse(ErrorCode.USERNAME_TAKEN);
     }
     if (!(await this.isEmailAvailable(email)).data.available) {
-      return createErrorResponse('EMAIL_TAKEN');
+      return createErrorResponse(ErrorCode.EMAIL_TAKEN);
     }
 
     const hashedPassword = await hashPassword(password);
@@ -70,7 +71,7 @@ export class UserService {
 
       return createSuccessResponse('REGISTRATION_SUCCEED');
     } catch (error) {
-      return createErrorResponse('REGISTRATION_FAILED');
+      return createErrorResponse(ErrorCode.REGISTRATION_FAILED);
     }
   }
 
@@ -96,12 +97,12 @@ export class UserService {
 
     // 用户不存在
     if (!user) {
-      return createErrorResponse('USER_NOT_FOUND');
+      return createErrorResponse(ErrorCode.USER_NOT_FOUND);
     }
 
     // 用户已激活
     if (user.isActive) {
-      return createErrorResponse('ALREADY_ACTIVATED');
+      return createErrorResponse(ErrorCode.ALREADY_ACTIVATED);
     }
 
     try {
@@ -120,7 +121,36 @@ export class UserService {
 
       return createSuccessResponse('RESEND_ACTIVATION_EMAIL_SUCCEED');
     } catch (error) {
-      return createErrorResponse('RESEND_ACTIVATION_EMAIL_FAILED');
+      return createErrorResponse(ErrorCode.RESEND_ACTIVATION_EMAIL_FAILED);
+    }
+  }
+
+  async activateAccount(token: string) {
+    const activationRecord = await this.userActivationRepository.findOne({
+      where: { token },
+      relations: ['user'],
+    });
+
+    if (!activationRecord || activationRecord.expireTime < new Date()) {
+      return createErrorResponse(ErrorCode.ACTIVATION_TOKEN_HAS_EXPIRED);
+    }
+
+    if (activationRecord.user.isActive) {
+      return createErrorResponse(ErrorCode.ACCOUNT_ALREADY_ACTIVATED);
+    }
+
+    try {
+      await this.dataSource.transaction(async (transactionalEntityManager) => {
+        activationRecord.user.isActive = true;
+        await transactionalEntityManager.save(activationRecord.user);
+
+        await transactionalEntityManager.remove(activationRecord);
+      });
+
+      return createSuccessResponse('ACCOUNT_HAS_BEEN_ACTIVATED');
+    } catch (error) {
+      // 在这里处理异常，可以提供具体的错误信息或日志记录
+      return createErrorResponse(ErrorCode.ACTIVATE_ACCOUNT_FAILED);
     }
   }
 }
