@@ -17,5 +17,11 @@ export default {
   activateAccount: 'Aktivera konto',
   resendActivationEmail: 'Skicka aktiveringsmejl igen',
   send: 'Skicka',
-  alreadyActivated: 'Redan aktiverat?'
+  alreadyActivated: 'Redan aktiverat?',
+  alreadyRegisteredNotActivated: 'Redan registrerad men inte aktiverad?',
+  activating: 'Aktiverar, var god vänta',
+  activationSuccessful: 'Aktivering lyckad, vänligen',
+  activationCodeExpired: 'Aktiveringskoden har gått ut. Vänligen',
+  checkYourEmailForActivation:
+    'Kontrollera din e-post och klicka på aktiveringslänken för att slutföra registreringsprocessen.'
 }

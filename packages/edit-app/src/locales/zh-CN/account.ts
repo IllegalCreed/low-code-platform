@@ -17,5 +17,10 @@ export default {
   activateAccount: '激活账号',
   resendActivationEmail: '重新发送激活邮件',
   send: '发送',
-  alreadyActivated: '已经激活？'
+  alreadyActivated: '已经激活？',
+  alreadyRegisteredNotActivated: '已注册但未激活？',
+  activating: '正在激活，请等待',
+  activationSuccessful: '激活成功，请',
+  activationCodeExpired: '激活码已失效，请',
+  checkYourEmailForActivation: '请检查您的电子邮件并点击激活链接以完成注册流程。'
 }

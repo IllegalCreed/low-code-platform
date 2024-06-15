@@ -49,8 +49,10 @@
     </div>
 
     <div flex flex-row items-center mt-2 w-70 text-3 space-x-2>
-      <span>已经注册但未激活？</span>
-      <neumorphism-link @click="router.push({ name: 'resend' })"> 去激活 </neumorphism-link>
+      <span>{{ t('account.alreadyRegisteredNotActivated') }}</span>
+      <neumorphism-link @click="router.push({ name: 'resend' })">
+        {{ t('account.resendActivationEmail') }}
+      </neumorphism-link>
     </div>
 
     <tool-bar absolute top-4 right-8></tool-bar>

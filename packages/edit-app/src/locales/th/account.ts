@@ -17,5 +17,11 @@ export default {
   activateAccount: 'เปิดใช้งานบัญชี',
   resendActivationEmail: 'ส่งอีเมล์เปิดใช้งานอีกครั้ง',
   send: 'ส่ง',
-  alreadyActivated: 'เปิดใช้งานแล้ว?'
+  alreadyActivated: 'เปิดใช้งานแล้ว?',
+  alreadyRegisteredNotActivated: 'ลงทะเบียนแล้วแต่ยังไม่ได้เปิดใช้งาน?',
+  activating: 'กำลังเปิดใช้งาน กรุณารอสักครู่',
+  activationSuccessful: 'เปิดใช้งานสำเร็จแล้ว กรุณา',
+  activationCodeExpired: 'รหัสเปิดใช้งานหมดอายุแล้ว กรุณา',
+  checkYourEmailForActivation:
+    'กรุณาตรวจสอบอีเมลของท่านและคลิกลิงก์เพื่อเปิดใช้งานเพื่อสำเร็จกระบวนการลงทะเบียน.'
 }

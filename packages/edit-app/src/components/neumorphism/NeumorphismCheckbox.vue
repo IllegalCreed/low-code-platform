@@ -73,7 +73,8 @@ const handleChange = () => {
     }
 
     &.checkbox-box-error {
-      @include neumorphism-error-shadow(0.1rem);
+      // @include neumorphism-error-shadow(0.1rem);
+      outline: var(--error-shadow-color) dashed 1px;
     }
   }
 

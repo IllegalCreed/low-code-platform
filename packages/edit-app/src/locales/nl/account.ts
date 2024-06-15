@@ -17,5 +17,11 @@ export default {
   activateAccount: 'Account activeren',
   resendActivationEmail: 'Activatie-e-mail opnieuw versturen',
   send: 'Versturen',
-  alreadyActivated: 'Al geactiveerd?'
+  alreadyActivated: 'Al geactiveerd?',
+  alreadyRegisteredNotActivated: 'Al geregistreerd maar niet geactiveerd?',
+  activating: 'Bezig met activeren, even geduld a.u.b.',
+  activationSuccessful: 'Activatie geslaagd, alstublieft',
+  activationCodeExpired: 'De activatiecode is verlopen. Gelieve',
+  checkYourEmailForActivation:
+    'Controleer alstublieft uw e-mail en klik op de activatielink om het registratieproces te voltooien.'
 }

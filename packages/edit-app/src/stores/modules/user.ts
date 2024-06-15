@@ -1,4 +1,10 @@
-import { registerAPI, usernameCheckAPI, emailCheckAPI, resendActiveEmailAPI } from '@/apis/user'
+import {
+  registerAPI,
+  usernameCheckAPI,
+  emailCheckAPI,
+  resendActiveEmailAPI,
+  activeAPI
+} from '@/apis/user'
 import type { UserInterface } from '@/apis/user/types'
 import { defineStore } from 'pinia'
 
@@ -38,5 +44,13 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  return { register, usernameCheck, emailCheck, resendActiveEmail }
+  async function active(token: string): Promise<boolean> {
+    try {
+      return await activeAPI(token)
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  return { register, usernameCheck, emailCheck, resendActiveEmail, active }
 })

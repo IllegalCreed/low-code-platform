@@ -17,5 +17,11 @@ export default {
   activateAccount: 'Aktywuj konto',
   resendActivationEmail: 'Wyślij ponownie e-mail aktywacyjny',
   send: 'Wyślij',
-  alreadyActivated: 'Już aktywowane?'
+  alreadyActivated: 'Już aktywowane?',
+  alreadyRegisteredNotActivated: 'Już zarejestrowany, ale nie aktywowany?',
+  activating: 'Aktywacja, proszę czekać',
+  activationSuccessful: 'Aktywacja zakończona sukcesem, proszę',
+  activationCodeExpired: 'Kod aktywacyjny wygasł. Proszę',
+  checkYourEmailForActivation:
+    'Proszę sprawdzić swoją pocztę i kliknąć w link aktywacyjny, aby zakończyć proces rejestracji.'
 }

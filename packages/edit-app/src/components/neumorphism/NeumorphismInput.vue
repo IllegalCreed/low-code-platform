@@ -41,7 +41,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
 const emit = defineEmits<{
-  blur:[]
+  blur: []
 }>()
 
 const props = withDefaults(
@@ -108,8 +108,13 @@ function togglePassword() {
     @include neumorphism-all-shadow(0.25rem);
   }
 
+  /** 错误效果可以在拟物和扁平间切换，目前拟物效果不好，所以先用扁平
+   *  还有一个原因，error的shadow和focus的shadow无法共存，我选择error让位
+   *  当然如果你喜欢拟物风格，你可以自行切换
+   */
   &.error {
-    @include neumorphism-error-shadow(0.25rem);
+    // @include neumorphism-error-shadow(0.25rem);
+    outline: var(--error-shadow-color) dashed 1px;
   }
 
   input {

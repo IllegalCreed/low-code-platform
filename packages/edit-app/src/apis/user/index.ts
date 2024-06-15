@@ -49,3 +49,16 @@ export const resendActiveEmailAPI = (email: string): Promise<any> => {
     false
   )
 }
+
+export const activeAPI = (token: string): Promise<any> => {
+  const data = {
+    token
+  }
+  return request.post(
+    {
+      url: '/user/activate',
+      data
+    },
+    false
+  )
+}

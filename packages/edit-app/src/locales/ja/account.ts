@@ -17,5 +17,11 @@ export default {
   activateAccount: 'アカウントを有効化',
   resendActivationEmail: '認証メールを再送信',
   send: '送信',
-  alreadyActivated: 'すでに有効化されていますか？'
+  alreadyActivated: 'すでに有効化されていますか？',
+  alreadyRegisteredNotActivated: 'すでに登録されていますが、未活性化ですか？',
+  activating: '活性化中です、お待ちください',
+  activationSuccessful: '活性化が成功しました、次の手順をお願いします',
+  activationCodeExpired: '活性化コードの有効期限が切れました。再度',
+  checkYourEmailForActivation:
+    'メールを確認し、登録プロセスを完了するために活性化リンクをクリックしてください。'
 }

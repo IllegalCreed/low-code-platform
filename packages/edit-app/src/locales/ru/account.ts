@@ -17,5 +17,11 @@ export default {
   activateAccount: 'Активировать аккаунт',
   resendActivationEmail: 'Повторно отправить письмо для активации',
   send: 'Отправить',
-  alreadyActivated: 'Уже активирован?'
+  alreadyActivated: 'Уже активирован?',
+  alreadyRegisteredNotActivated: 'Уже зарегистрированы, но не активированы?',
+  activating: 'Идет активация, пожалуйста, подождите',
+  activationSuccessful: 'Активация прошла успешно, пожалуйста',
+  activationCodeExpired: 'Срок действия кода активации истек. Пожалуйста',
+  checkYourEmailForActivation:
+    'Пожалуйста, проверьте свою почту и нажмите на ссылку активации, чтобы завершить процесс регистрации.'
 }
