@@ -116,7 +116,7 @@ function onResend() {
 }
 
 .error-message {
-  color: $red-500;
+  color: var(--error-shadow-color);
   @apply inline text-3 mb-4 h-4;
 }
 </style>

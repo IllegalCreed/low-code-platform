@@ -156,17 +156,23 @@ const [isAgree, isAgreeAttrs] = defineField('isAgree', {
 
 const router = useRouter()
 
-const onRegister = handleSubmit(async (values) => {
-  try {
-    await registerAction({
-      username: values.username,
-      password: values.password,
-      email: values.email
-    })
-  } catch (err) {
-    // Handle registration error
-  }
-})
+function onRegister() {
+  serverError.value = ''
+  handleSubmit(async (values) => {
+    try {
+      await registerAction({
+        username: values.username,
+        password: values.password,
+        email: values.email
+      })
+      router.push('activate')
+    } catch (err: any) {
+      if (err?.msg) {
+        serverError.value = err?.msg
+      }
+    }
+  })()
+}
 </script>
 
 <style lang="scss" scoped>
@@ -203,7 +209,7 @@ const onRegister = handleSubmit(async (values) => {
 }
 
 .error-message {
-  color: $red-500;
-  @apply inline text-3 h-4;
+  color: var(--error-shadow-color);
+  @apply inline text-3 mb-4 h-4;
 }
 </style>
