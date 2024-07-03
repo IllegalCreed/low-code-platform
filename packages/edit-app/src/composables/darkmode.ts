@@ -21,7 +21,7 @@ watch(
 
     switchClass(newValue, () => {
       const grayScale = calculateGrayscaleValue(getCssVar(VAR_PAGE_BACKGROUND_COLOR))
-      /* 做一次指数映射，说白了就是阴影和高亮不要太白了，稍微暗一些 */
+      /* 做一次指数映射，说白了就是阴影和高亮的亮度比普通的线性映射低一些，稍微暗一些 */
       const targetValue = exponentialMapping(grayScale)
       setCssVar(VAR_SHADOW_INNER_LIGHT, targetValue)
       setCssVar(

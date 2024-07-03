@@ -36,6 +36,7 @@ export default defineConfig({
         'vue-router',
         '@vueuse/core',
         'vee-validate',
+        // 'vitest', // 在 vitest.config 配置全局变量后就用不着 autoimport 了
         // 自定义导入
         {
           // 包导入

@@ -7,11 +7,12 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "test:unit": "vitest",
+    "test:unit": "vitest --ui",
     "build-only": "vite build && cp 404.html dist/",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@vee-validate/yup": "^4.13.1",
@@ -39,10 +40,12 @@
     "@types/node": "^20.12.12",
     "@types/uuid": "^9.0.8",
     "@vitejs/plugin-vue": "^5.0.4",
+    "@vitest/ui": "^1.6.0",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
+    "cypress": "^13.13.0",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.26.0",
     "jsdom": "^24.0.0",

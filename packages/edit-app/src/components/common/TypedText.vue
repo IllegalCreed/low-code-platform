@@ -32,7 +32,7 @@ let isDeleting = false
 let lastTime = 0
 let timeoutId = 0
 
-// NOTE: 小技巧，如果不能直接watch prop，请把它装进一个computed里。
+// NOTE: 小技巧，如果不能直接watch prop，请把它装进一个computed里。也可以用toRef()，或者用toRefs()包装所有props
 const strings = computed(() => props.strings)
 watch(strings, () => {
   clear()
