@@ -58,6 +58,7 @@ function clear() {
 }
 
 function type() {
+  if (!props.strings) return
   // console.log('setTimeOut need to be released')
   const currentString = props.strings[stringArrayIndex % props.strings.length]
   const progress = charIndex / currentString.length
