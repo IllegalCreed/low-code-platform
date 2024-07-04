@@ -16,6 +16,7 @@ const props = withDefaults(
     deletingEasing?: Function
   }>(),
   {
+    strings: () => [],
     totalTypeDuration: 2000,
     totalDeleteDuration: 1500,
     betweenInterval: 2000,
