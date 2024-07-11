@@ -35,8 +35,12 @@ axiosInstance.interceptors.request.use(
     config.signal = controller.signal // 将 signal 赋值给请求配置
     abortControllerMap.set(url, controller) // 存储 URL 和 AbortController 的映射
 
-    // 数据转换逻辑：处理 GET 请求的参数
-    if (config.url && config.method?.toLowerCase() === 'get' && config.params) {
+    // 数据转换逻辑：处理 GET DELETE 请求的参数
+    if (
+      config.url &&
+      (config.method?.toLowerCase() === 'get' || config.method?.toLowerCase() === 'delete') &&
+      config.params
+    ) {
       const queryString = tansParams(config.params)
       config.url = config.url.includes('?')
         ? `${config.url}&${queryString}`
