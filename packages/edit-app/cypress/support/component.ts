@@ -1,5 +1,5 @@
 // ***********************************************************
-// This example support/component.js is processed and
+// This example support/component.ts is processed and
 // loaded automatically before your test files.
 //
 // This is a great place to put global configuration and
@@ -21,6 +21,18 @@
 
 // import { mount } from 'cypress/vue'
 
+// Augment the Cypress namespace to include type definitions for
+// your custom command.
+// Alternatively, can be defined in cypress/support/component.d.ts
+// with a <reference path="./component" /> at the top of your spec.
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      mount: typeof mount
+    }
+  }
+}
+
 // Cypress.Commands.add('mount', mount)
 
 // Example use:
@@ -34,16 +46,16 @@ import 'virtual:uno.css'
 import '@/styles/main.scss'
 
 import { mount } from 'cypress/vue'
-import router from '@/router'
-import store from '@/stores'
-import i18n from '@/locales'
+import router from '../../src/router'
+import store from '../../src/stores'
+import i18n from '../../src/locales'
 
-Cypress.Commands.add('mount', (component, ...args) => {
-  args.global = args.global || {}
-  args.global.plugins = args.global.plugins || []
-  args.global.plugins.push(router)
-  args.global.plugins.push(store)
-  args.global.plugins.push(i18n)
+Cypress.Commands.add('mount', (component, options = {}) => {
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
+  options.global.plugins.push(router)
+  options.global.plugins.push(store)
+  options.global.plugins.push(i18n)
 
-  mount(component, ...args)
+  mount(component, options)
 })
