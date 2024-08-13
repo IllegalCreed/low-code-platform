@@ -21,6 +21,7 @@ export function useValidateCatch() {
       validateCache.set(key, value)
       return func()
     }
+    // TODO: 不应该直接return true，应该返回上次一验证结果
     return true
   }
 
