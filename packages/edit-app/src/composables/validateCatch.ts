@@ -17,12 +17,13 @@ export function useValidateCatch() {
     key: string,
     func: () => Promise<boolean> | boolean
   ): Promise<boolean> {
-    if (value && validateCache.get(key) !== value) {
-      validateCache.set(key, value)
-      return func()
+    const cache = validateCache.get(key) || {};
+    if (value && cache.value !== value) {
+      const result = func()
+      validateCache.set(key, {value, result})
+      return result;
     }
-    // TODO: 不应该直接return true，应该返回上次一验证结果
-    return true
+    return cache.result;
   }
 
   // 当组件卸载时清理缓存
