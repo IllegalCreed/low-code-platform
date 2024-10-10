@@ -54,7 +54,6 @@ export function switchClass(isDarkMode: boolean, cb: () => void) {
 
 export function useSetDark(value: boolean, event?: MouseEvent) {
   /** 过滤ts错误 */
-  // @ts-expect-error experimental API
   if (!document.startViewTransition || !event) {
     isDarkMode.value = value
     return
@@ -67,7 +66,6 @@ export function useSetDark(value: boolean, event?: MouseEvent) {
   const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
 
   // 开始一次视图过渡：
-  // @ts-expect-error experimental API
   const transition = document.startViewTransition(async () => {
     isDarkMode.value = value
     await nextTick()
