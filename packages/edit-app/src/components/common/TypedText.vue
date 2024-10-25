@@ -95,7 +95,7 @@ function type() {
 </script>
 
 <style lang="scss" scoped>
-@use 'src/styles/_common.scss' as *;
+@use '/src/styles/_common.scss' as *;
 
 .typed-text {
   @apply block;

@@ -1,4 +1,5 @@
-@use 'colors';
+@use "sass:list";
+@use '_colors.scss';
 @use 'sass:math';
 @use 'sass:color';
 @use 'sass:meta';
@@ -36,8 +37,8 @@
   $light-bg: null;
   @if meta.type-of($bg) == 'color' {
     // 如果 $bg 是颜色值
-    $dark-bg: darken($bg, 10%);
-    $light-bg: lighten($bg, 7%);
+    $dark-bg: color.adjust($bg, $lightness: -10%);
+    $light-bg: color.adjust($bg, $lightness: 7%);
   } @else {
     // 如果 $bg 是 CSS 变量
     $dark-bg: var(--page-background-color-darken);
@@ -53,8 +54,8 @@
 
 @mixin neumorphism-concave($deep, $bg: var(--page-background-color)) {
   $colors: generate-dark-light-bg($bg);
-  $dark-bg: nth($colors, 1);
-  $light-bg: nth($colors, 2);
+  $dark-bg: list.nth($colors, 1);
+  $light-bg: list.nth($colors, 2);
 
   background-color: linear-gradient(to bottom right, $dark-bg, $light-bg);
   @include neumorphism-outer-shadow($deep);
@@ -62,8 +63,8 @@
 
 @mixin neumorphism-convex($deep, $bg: var(--page-background-color)) {
   $colors: generate-dark-light-bg($bg);
-  $dark-bg: nth($colors, 1);
-  $light-bg: nth($colors, 2);
+  $dark-bg: list.nth($colors, 1);
+  $light-bg: list.nth($colors, 2);
 
   background-color: linear-gradient(to bottom right, $light-bg, $dark-bg);
   @include neumorphism-outer-shadow($deep);

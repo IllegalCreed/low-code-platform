@@ -5,7 +5,7 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
-@use 'src/styles/_common.scss' as *;
+@use '/src/styles/_common.scss' as *;
 
 .blur-ball {
   @apply block;

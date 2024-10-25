@@ -2,7 +2,7 @@
   <div v-if="svgContent" v-html="svgContent" class="dynamic-svg"></div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import DOMPurify from 'dompurify'
 
 const props = defineProps({
