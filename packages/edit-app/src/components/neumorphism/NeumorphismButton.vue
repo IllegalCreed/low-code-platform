@@ -11,23 +11,23 @@
 
 <script setup lang="ts">
 const emit = defineEmits<{
-  click: [event: MouseEvent]
-}>()
+  click: [event: MouseEvent];
+}>();
 
 const props = withDefaults(
   defineProps<{
-    disabled?: boolean
-    loading?: boolean
+    disabled?: boolean;
+    loading?: boolean;
   }>(),
   {
     disabled: false,
-    loading: false
-  }
-)
+    loading: false,
+  },
+);
 
 const handleClick = (event: MouseEvent) => {
-  emit('click', event)
-}
+  emit('click', event);
+};
 </script>
 
 <style lang="scss" scoped>

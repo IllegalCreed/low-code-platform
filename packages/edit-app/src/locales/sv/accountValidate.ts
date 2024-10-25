@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'Lösenordet måste innehålla minst ett nummer.',
   passwordSpecialCharError:
     "Lösenordet måste innehålla minst ett specialtecken ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'Du måste godkänna villkoren.'
-}
+  termsAgreementError: 'Du måste godkänna villkoren.',
+};

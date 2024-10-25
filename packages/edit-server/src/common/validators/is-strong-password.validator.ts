@@ -1,12 +1,7 @@
-import {
-  ValidatorConstraint,
-  ValidatorConstraintInterface,
-} from 'class-validator';
+import { ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 
 @ValidatorConstraint({ async: false })
-export class IsStrongPasswordConstraint
-  implements ValidatorConstraintInterface
-{
+export class IsStrongPasswordConstraint implements ValidatorConstraintInterface {
   validate(password: string) {
     const strongPasswordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;

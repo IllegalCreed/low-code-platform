@@ -21,17 +21,14 @@ export const ErrorCodeMessages: { [key in ErrorCode]: string } = {
   [ErrorCode.EMAIL_TAKEN]: 'Email is already taken.',
   [ErrorCode.WEAK_PASSWORD]: 'Password does not meet strength requirements.',
   [ErrorCode.INVALID_EMAIL_FORMAT]: 'Invalid email format.',
-  [ErrorCode.REGISTRATION_FAILED]:
-    'Registration failed due to unexpected error.',
+  [ErrorCode.REGISTRATION_FAILED]: 'Registration failed due to unexpected error.',
   // 激活相关
   [ErrorCode.RESEND_ACTIVATION_EMAIL_FAILED]:
     'Failed to resend activation email due to an unexpected error.',
   [ErrorCode.ALREADY_ACTIVATED]: 'The account is already activated.',
   [ErrorCode.USER_NOT_FOUND]: 'No such user with the given email.',
-  [ErrorCode.ACTIVATION_TOKEN_HAS_EXPIRED]:
-    'Activation token is invalid or has expired.',
+  [ErrorCode.ACTIVATION_TOKEN_HAS_EXPIRED]: 'Activation token is invalid or has expired.',
   [ErrorCode.ACCOUNT_ALREADY_ACTIVATED]: 'Account is already activated.',
-  [ErrorCode.ACTIVATE_ACCOUNT_FAILED]:
-    'Activation failed due to unexpected error.',
+  [ErrorCode.ACTIVATE_ACCOUNT_FAILED]: 'Activation failed due to unexpected error.',
   // 省略其他错误消息
 };

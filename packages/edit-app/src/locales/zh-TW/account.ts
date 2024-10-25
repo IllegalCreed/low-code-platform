@@ -22,5 +22,5 @@ export default {
   activating: '正在激活，請等待',
   activationSuccessful: '激活成功，請',
   activationCodeExpired: '激活碼已過期，請',
-  checkYourEmailForActivation: '請檢查您的電子郵件並點擊激活鏈接以完成註冊過程。'
-}
+  checkYourEmailForActivation: '請檢查您的電子郵件並點擊激活鏈接以完成註冊過程。',
+};

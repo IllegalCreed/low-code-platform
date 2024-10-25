@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل.',
   passwordSpecialCharError:
     "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'يجب عليك الموافقة على الشروط.'
-}
+  termsAgreementError: 'يجب عليك الموافقة على الشروط.',
+};

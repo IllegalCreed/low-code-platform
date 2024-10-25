@@ -6,13 +6,13 @@
 
 <script setup lang="ts">
 interface Props {
-  item: Item
+  item: Item;
 }
-const props = defineProps<Props>()
-const itemClickHandle = inject<((key: string) => void) | undefined>('itemClickHandle')
+const props = defineProps<Props>();
+const itemClickHandle = inject<((key: string) => void) | undefined>('itemClickHandle');
 
 function clickHandle() {
-  itemClickHandle?.(props.item.key)
+  itemClickHandle?.(props.item.key);
 }
 </script>
 

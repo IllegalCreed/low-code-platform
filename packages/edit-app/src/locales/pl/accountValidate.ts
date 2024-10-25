@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'Hasło musi zawierać co najmniej jedną cyfrę.',
   passwordSpecialCharError:
     "Hasło musi zawierać co najmniej jeden znak specjalny ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'Musisz zaakceptować warunki.'
-}
+  termsAgreementError: 'Musisz zaakceptować warunki.',
+};

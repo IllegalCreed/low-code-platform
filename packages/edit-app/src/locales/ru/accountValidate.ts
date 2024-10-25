@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'Пароль должен содержать хотя бы одну цифру.',
   passwordSpecialCharError:
     "Пароль должен содержать хотя бы один специальный символ ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'Вы должны согласиться с условиями.'
-}
+  termsAgreementError: 'Вы должны согласиться с условиями.',
+};

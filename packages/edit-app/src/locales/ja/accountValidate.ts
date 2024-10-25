@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'パスワードには少なくとも1つの数字を含む必要があります。',
   passwordSpecialCharError:
     "パスワードには少なくとも1つの特殊文字({'@'}, $, !, %, *, ?, &)を含む必要があります。",
-  termsAgreementError: '利用規約に同意する必要があります。'
-}
+  termsAgreementError: '利用規約に同意する必要があります。',
+};

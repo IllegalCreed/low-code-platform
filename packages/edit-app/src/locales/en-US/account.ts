@@ -23,5 +23,5 @@ export default {
   activationSuccessful: 'Activation successful, please',
   activationCodeExpired: 'Activation code has expired. Please',
   checkYourEmailForActivation:
-    'Please check your email and click the activation link to complete the registration process.'
-}
+    'Please check your email and click the activation link to complete the registration process.',
+};

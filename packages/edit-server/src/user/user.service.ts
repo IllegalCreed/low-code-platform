@@ -7,10 +7,7 @@ import { UserActivation } from './entities/userActivation.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { hashPassword } from '../common/utils/security';
 import { ApiResponse } from '../common/interfaces/api-response.interface';
-import {
-  createErrorResponse,
-  createSuccessResponse,
-} from '../common/utils/response';
+import { createErrorResponse, createSuccessResponse } from '../common/utils/response';
 import { MailerService } from 'src/mailer/mailer.service';
 import { ErrorCode } from 'src/common/constants/error-codes';
 
@@ -75,17 +72,13 @@ export class UserService {
     }
   }
 
-  async isUsernameAvailable(
-    username: string,
-  ): Promise<ApiResponse<{ available: boolean }>> {
+  async isUsernameAvailable(username: string): Promise<ApiResponse<{ available: boolean }>> {
     const user = await this.userRepository.findOne({ where: { username } });
     const available = !user;
     return createSuccessResponse({ available });
   }
 
-  async isEmailAvailable(
-    email: string,
-  ): Promise<ApiResponse<{ available: boolean }>> {
+  async isEmailAvailable(email: string): Promise<ApiResponse<{ available: boolean }>> {
     const user = await this.userRepository.findOne({ where: { email } });
     const available = !user;
     return createSuccessResponse({ available });

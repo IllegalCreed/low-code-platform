@@ -3,7 +3,7 @@
  * @returns {object} 钩子提供的方法。
  */
 export function useValidateCatch() {
-  const validateCache = new Map<string, any>()
+  const validateCache = new Map<string, any>();
 
   /**
    * 检查给定键的缓存值是否已经存在并与当前值匹配，如果不匹配，则执行验证函数。
@@ -15,12 +15,12 @@ export function useValidateCatch() {
   async function checkCatch<T>(
     value: T,
     key: string,
-    func: () => Promise<boolean> | boolean
+    func: () => Promise<boolean> | boolean,
   ): Promise<boolean> {
     const cache = validateCache.get(key) || {};
     if (value && cache.value !== value) {
-      const result = func()
-      validateCache.set(key, {value, result})
+      const result = func();
+      validateCache.set(key, { value, result });
       return result;
     }
     return cache.result;
@@ -28,8 +28,8 @@ export function useValidateCatch() {
 
   // 当组件卸载时清理缓存
   onUnmounted(() => {
-    validateCache.clear()
-  })
+    validateCache.clear();
+  });
 
-  return { checkCatch }
+  return { checkCatch };
 }

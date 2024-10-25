@@ -23,5 +23,5 @@ export default {
   activationSuccessful: 'Activatie geslaagd, alstublieft',
   activationCodeExpired: 'De activatiecode is verlopen. Gelieve',
   checkYourEmailForActivation:
-    'Controleer alstublieft uw e-mail en klik op de activatielink om het registratieproces te voltooien.'
-}
+    'Controleer alstublieft uw e-mail en klik op de activatielink om het registratieproces te voltooien.',
+};

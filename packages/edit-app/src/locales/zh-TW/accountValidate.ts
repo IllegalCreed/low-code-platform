@@ -10,5 +10,5 @@ export default {
   passwordLowercaseError: '密碼至少包含一個小寫字母。',
   passwordNumberError: '密碼至少包含一個數字。',
   passwordSpecialCharError: "密碼至少包含一個特殊字符（{'@'}, $, !, %, *, ?, &）。",
-  termsAgreementError: '您必須同意條款。'
-}
+  termsAgreementError: '您必須同意條款。',
+};

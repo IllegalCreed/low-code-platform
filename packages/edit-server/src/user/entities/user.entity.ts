@@ -49,8 +49,7 @@ export class User {
   @Column({
     type: 'timestamp',
     nullable: true,
-    comment:
-      "The timestamp of the user's last login. Can be null if the user has never logged in.",
+    comment: "The timestamp of the user's last login. Can be null if the user has never logged in.",
   })
   lastLogin: Date | null;
 

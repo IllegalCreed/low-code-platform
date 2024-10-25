@@ -1,25 +1,25 @@
-import { createI18n } from 'vue-i18n'
+import { createI18n } from 'vue-i18n';
 /*
  * All i18n resources specified in the plugin `include` option can be loaded
  * at once using the import syntax
  */
 // import messages from '@intlify/unplugin-vue-i18n/messages'
-import en_us from './en-US'
-import zh_cn from './zh-CN'
-import zh_tw from './zh-TW'
-import ja from './ja'
-import ko from './ko'
-import fr from './fr'
-import es from './es'
-import pt from './pt'
-import ru from './ru'
-import ar from './ar'
-import de from './de'
-import it from './it'
-import nl from './nl'
-import pl from './pl'
-import sv from './sv'
-import th from './th'
+import en_us from './en-US';
+import zh_cn from './zh-CN';
+import zh_tw from './zh-TW';
+import ja from './ja';
+import ko from './ko';
+import fr from './fr';
+import es from './es';
+import pt from './pt';
+import ru from './ru';
+import ar from './ar';
+import de from './de';
+import it from './it';
+import nl from './nl';
+import pl from './pl';
+import sv from './sv';
+import th from './th';
 
 const i18n = createI18n({
   legacy: false, // for Vue 3, set to false
@@ -42,8 +42,8 @@ const i18n = createI18n({
     nl,
     pl,
     sv,
-    th
-  }
-})
+    th,
+  },
+});
 
-export default i18n
+export default i18n;

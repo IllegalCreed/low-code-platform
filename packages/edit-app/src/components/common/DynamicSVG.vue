@@ -3,21 +3,21 @@
 </template>
 
 <script setup lang="ts">
-import DOMPurify from 'dompurify'
+import DOMPurify from 'dompurify';
 
 const props = defineProps({
   src: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const svgContent = ref('')
+const svgContent = ref('');
 
 const updateSvgContent = async () => {
   try {
-    const response = await fetch(props.src)
-    const svgData = await response.text()
+    const response = await fetch(props.src);
+    const svgData = await response.text();
     const cleanedSvgData = DOMPurify.sanitize(svgData, {
       ALLOWED_TAGS: [
         'svg',
@@ -32,7 +32,7 @@ const updateSvgContent = async () => {
         'text',
         'tspan',
         'defs',
-        'use'
+        'use',
       ],
       ALLOWED_ATTR: [
         'xmlns',
@@ -58,17 +58,17 @@ const updateSvgContent = async () => {
         'style',
         'class',
         'transform',
-        'xlink:href'
-      ]
-    })
+        'xlink:href',
+      ],
+    });
 
-    svgContent.value = cleanedSvgData
+    svgContent.value = cleanedSvgData;
   } catch (error) {
-    console.error('Error loading SVG:', error)
+    console.error('Error loading SVG:', error);
   }
-}
+};
 
-onMounted(updateSvgContent)
+onMounted(updateSvgContent);
 </script>
 
 <style scoped>

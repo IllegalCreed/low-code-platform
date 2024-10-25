@@ -29,17 +29,17 @@
 </template>
 
 <script setup lang="ts">
-import * as yup from 'yup'
-import { useUserStore } from '@/stores/modules/user'
-import { toTypedSchema } from '@vee-validate/yup'
-import { useValidateCatch } from '@/composables/validateCatch'
+import * as yup from 'yup';
+import { useUserStore } from '@/stores/modules/user';
+import { toTypedSchema } from '@vee-validate/yup';
+import { useValidateCatch } from '@/composables/validateCatch';
 
-const router = useRouter()
-const { t } = useI18n()
-const { checkCatch } = useValidateCatch()
-const { emailCheck: emailCheckAction, resendActiveEmail: resendAction } = useUserStore()
+const router = useRouter();
+const { t } = useI18n();
+const { checkCatch } = useValidateCatch();
+const { emailCheck: emailCheckAction, resendActiveEmail: resendAction } = useUserStore();
 
-const serverError = ref('')
+const serverError = ref('');
 
 const { handleSubmit, isSubmitting, defineField } = useForm({
   validationSchema: toTypedSchema(
@@ -53,33 +53,33 @@ const { handleSubmit, isSubmitting, defineField } = useForm({
           () => t('accountValidate.emailUniqueError'),
           async (value, context) => {
             return await checkCatch<string>(value, context.path, () => {
-              return emailCheckAction(value)
-            })
-          }
+              return emailCheckAction(value);
+            });
+          },
         )
-        .default('')
-    })
-  )
-})
+        .default(''),
+    }),
+  ),
+});
 const [email, emailAttrs] = defineField('email', (state) => ({
   props: {
-    error: state.errors[0]
+    error: state.errors[0],
   },
-  validateOnModelUpdate: false
-}))
+  validateOnModelUpdate: false,
+}));
 
 function onResend() {
-  serverError.value = ''
+  serverError.value = '';
   handleSubmit(async (values) => {
     try {
-      await resendAction(values.email)
-      router.push('activate')
+      await resendAction(values.email);
+      router.push('activate');
     } catch (err: any) {
       if (err?.msg) {
-        serverError.value = err?.msg
+        serverError.value = err?.msg;
       }
     }
-  })()
+  })();
 }
 </script>
 

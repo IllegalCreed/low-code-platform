@@ -10,5 +10,5 @@ export default {
   passwordLowercaseError: 'รหัสผ่านต้องมีอักษรตัวเล็กอย่างน้อยหนึ่งตัว',
   passwordNumberError: 'รหัสผ่านต้องมีตัวเลขอย่างน้อยหนึ่งตัว',
   passwordSpecialCharError: "รหัสผ่านต้องมีอักขระพิเศษอย่างน้อยหนึ่งตัว ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'คุณต้องยอมรับเงื่อนไข'
-}
+  termsAgreementError: 'คุณต้องยอมรับเงื่อนไข',
+};

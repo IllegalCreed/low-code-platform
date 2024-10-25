@@ -3,17 +3,17 @@
 </template>
 
 <script setup lang="ts">
-import { linear, easeInQuad } from '@/utils/ease'
+import { linear, easeInQuad } from '@/utils/ease';
 
 const props = withDefaults(
   defineProps<{
-    strings: string[]
-    totalTypeDuration?: number
-    totalDeleteDuration?: number
-    betweenInterval?: number
-    loop?: boolean
-    typingEasing?: Function
-    deletingEasing?: Function
+    strings: string[];
+    totalTypeDuration?: number;
+    totalDeleteDuration?: number;
+    betweenInterval?: number;
+    loop?: boolean;
+    typingEasing?: Function;
+    deletingEasing?: Function;
   }>(),
   {
     strings: () => [],
@@ -22,75 +22,75 @@ const props = withDefaults(
     betweenInterval: 2000,
     loop: true,
     typingEasing: easeInQuad,
-    deletingEasing: linear
-  }
-)
+    deletingEasing: linear,
+  },
+);
 
-const displayText = ref('')
-let stringArrayIndex = 0
-let charIndex = 0
-let isDeleting = false
-let lastTime = 0
-let timeoutId = 0
+const displayText = ref('');
+let stringArrayIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let lastTime = 0;
+let timeoutId = 0;
 
 // NOTE: 小技巧，如果不能直接watch prop，请把它装进一个computed里。也可以用toRef()，或者用toRefs()包装所有props
-const strings = computed(() => props.strings)
+const strings = computed(() => props.strings);
 watch(strings, () => {
-  clear()
-  type()
-})
+  clear();
+  type();
+});
 
 onMounted(() => {
-  type()
-})
+  type();
+});
 
 onBeforeUnmount(() => {
-  clear()
-})
+  clear();
+});
 
 function clear() {
-  displayText.value = ''
-  isDeleting = false
-  charIndex = 0
-  lastTime = 0
+  displayText.value = '';
+  isDeleting = false;
+  charIndex = 0;
+  lastTime = 0;
   if (timeoutId !== 0) {
-    clearTimeout(timeoutId) // 释放激活的定时器
+    clearTimeout(timeoutId); // 释放激活的定时器
   }
 }
 
 function type() {
-  if (!props.strings) return
+  if (!props.strings) return;
   // console.log('setTimeOut need to be released')
-  const currentString = props.strings[stringArrayIndex % props.strings.length]
-  const progress = charIndex / currentString.length
-  const totalDuration = isDeleting ? props.totalDeleteDuration : props.totalTypeDuration
-  const easeFunction = isDeleting ? props.deletingEasing : props.typingEasing
-  const adjustedProgress = easeFunction(progress)
-  const adjustedTime = adjustedProgress * totalDuration
-  const nextInterval = Math.max(0, isDeleting ? lastTime - adjustedTime : adjustedTime - lastTime)
-  lastTime = adjustedTime
+  const currentString = props.strings[stringArrayIndex % props.strings.length];
+  const progress = charIndex / currentString.length;
+  const totalDuration = isDeleting ? props.totalDeleteDuration : props.totalTypeDuration;
+  const easeFunction = isDeleting ? props.deletingEasing : props.typingEasing;
+  const adjustedProgress = easeFunction(progress);
+  const adjustedTime = adjustedProgress * totalDuration;
+  const nextInterval = Math.max(0, isDeleting ? lastTime - adjustedTime : adjustedTime - lastTime);
+  lastTime = adjustedTime;
 
   /* NOTE: 这里需要用window.setTimeout，因为ts不知道你用的是node的还是哪个，会在build时候给你报错 */
   timeoutId = window.setTimeout(() => {
     displayText.value = isDeleting
       ? currentString.substring(0, --charIndex)
-      : currentString.substring(0, ++charIndex)
+      : currentString.substring(0, ++charIndex);
 
     if (charIndex === 0 || charIndex === currentString.length) {
       timeoutId = window.setTimeout(() => {
-        isDeleting = !isDeleting
+        isDeleting = !isDeleting;
         if (!isDeleting) {
-          stringArrayIndex = (stringArrayIndex + 1) % props.strings.length
+          stringArrayIndex = (stringArrayIndex + 1) % props.strings.length;
           if (!props.loop && stringArrayIndex === 0) {
-            return
+            return;
           }
         }
-        type()
-      }, props.betweenInterval)
+        type();
+      }, props.betweenInterval);
     } else {
-      type()
+      type();
     }
-  }, nextInterval)
+  }, nextInterval);
 }
 </script>
 

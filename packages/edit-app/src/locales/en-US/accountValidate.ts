@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'Password must include at least one number.',
   passwordSpecialCharError:
     "Password must include at least one special character ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'You must agree to the terms.'
-}
+  termsAgreementError: 'You must agree to the terms.',
+};

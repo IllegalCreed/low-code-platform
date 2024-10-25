@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'Le mot de passe doit contenir au moins un chiffre.',
   passwordSpecialCharError:
     "Le mot de passe doit contenir au moins un caractère spécial ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'Vous devez accepter les termes.'
-}
+  termsAgreementError: 'Vous devez accepter les termes.',
+};

@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'Passwort muss mindestens eine Zahl enthalten.',
   passwordSpecialCharError:
     "Passwort muss mindestens ein Sonderzeichen ({'@'}, $, !, %, *, ?, &) enthalten.",
-  termsAgreementError: 'Sie müssen den Bedingungen zustimmen.'
-}
+  termsAgreementError: 'Sie müssen den Bedingungen zustimmen.',
+};

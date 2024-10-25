@@ -60,19 +60,19 @@
 </template>
 
 <script setup lang="ts">
-import * as yup from 'yup'
-import { useUserStore } from '@/stores/modules/user'
-import { toTypedSchema } from '@vee-validate/yup'
-import { useValidateCatch } from '@/composables/validateCatch'
+import * as yup from 'yup';
+import { useUserStore } from '@/stores/modules/user';
+import { toTypedSchema } from '@vee-validate/yup';
+import { useValidateCatch } from '@/composables/validateCatch';
 
-const { t } = useI18n()
+const { t } = useI18n();
 const {
   register: registerAction,
   usernameCheck: usernameCheckAction,
-  emailCheck: emailCheckAction
-} = useUserStore()
-const { checkCatch } = useValidateCatch()
-const serverError = ref('')
+  emailCheck: emailCheckAction,
+} = useUserStore();
+const { checkCatch } = useValidateCatch();
+const serverError = ref('');
 
 const { handleSubmit, isSubmitting, defineField } = useForm({
   validationSchema: toTypedSchema(
@@ -91,9 +91,9 @@ const { handleSubmit, isSubmitting, defineField } = useForm({
              * 但目前明显办不到，因为所有验证是同时进行的。
              */
             return await checkCatch<string>(value, context.path, () => {
-              return usernameCheckAction(value)
-            })
-          }
+              return usernameCheckAction(value);
+            });
+          },
         )
         .default(''),
       email: yup
@@ -105,9 +105,9 @@ const { handleSubmit, isSubmitting, defineField } = useForm({
           () => t('accountValidate.emailUniqueError'),
           async (value, context) => {
             return await checkCatch<string>(value, context.path, () => {
-              return emailCheckAction(value)
-            })
-          }
+              return emailCheckAction(value);
+            });
+          },
         )
         .default(''),
       password: yup
@@ -122,56 +122,56 @@ const { handleSubmit, isSubmitting, defineField } = useForm({
       isAgree: yup
         .boolean()
         .oneOf([true], () => t('accountValidate.termsAgreementError'))
-        .default(false)
-    })
-  )
-})
+        .default(false),
+    }),
+  ),
+});
 const [username, usernameAttrs] = defineField('username', (state) => ({
   props: {
-    error: state.errors[0]
+    error: state.errors[0],
   },
-  validateOnModelUpdate: false
-}))
+  validateOnModelUpdate: false,
+}));
 const [password, passwordAttrs] = defineField('password', (state) => ({
   /** NOTE: 这个函数调用非常频繁
    * 用来给你的组件附加更多props或者attrs
    * 当然你直接写到组件上也OK，但是这不composables
    * 我们只想让验证逻辑集中管理，让组件看起来和单独使用无异 */
   props: {
-    error: state.errors[0]
+    error: state.errors[0],
   },
-  validateOnModelUpdate: state.errors.length > 0
-}))
+  validateOnModelUpdate: state.errors.length > 0,
+}));
 const [email, emailAttrs] = defineField('email', (state) => ({
   props: {
-    error: state.errors[0]
+    error: state.errors[0],
   },
-  validateOnModelUpdate: false
-}))
+  validateOnModelUpdate: false,
+}));
 const [isAgree, isAgreeAttrs] = defineField('isAgree', {
   props: (state) => {
-    return { error: state.errors[0] }
-  }
-})
+    return { error: state.errors[0] };
+  },
+});
 
-const router = useRouter()
+const router = useRouter();
 
 function onRegister() {
-  serverError.value = ''
+  serverError.value = '';
   handleSubmit(async (values) => {
     try {
       await registerAction({
         username: values.username,
         password: values.password,
-        email: values.email
-      })
-      router.push('activate')
+        email: values.email,
+      });
+      router.push('activate');
     } catch (err: any) {
       if (err?.msg) {
-        serverError.value = err?.msg
+        serverError.value = err?.msg;
       }
     }
-  })()
+  })();
 }
 </script>
 

@@ -12,7 +12,7 @@
         :class="[
           'checkbox-box',
           modelValue ? 'checked' : null,
-          hasError ? 'checkbox-box-error' : null
+          hasError ? 'checkbox-box-error' : null,
         ]"
       ></span>
       <span class="checkbox-text"><slot></slot></span>
@@ -21,32 +21,32 @@
 </template>
 
 <script setup lang="ts">
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 const emit = defineEmits<{
-  changed: [value: boolean, event?: MouseEvent]
-}>()
+  changed: [value: boolean, event?: MouseEvent];
+}>();
 
 const props = defineProps<{
-  id?: string
-  error?: string
-}>()
+  id?: string;
+  error?: string;
+}>();
 
-const modelValue = defineModel<boolean>({ default: false })
-const isHover = ref<boolean>(false)
+const modelValue = defineModel<boolean>({ default: false });
+const isHover = ref<boolean>(false);
 
-const checkboxId = computed(() => props.id || uuidv4())
+const checkboxId = computed(() => props.id || uuidv4());
 const hasError = computed(() => {
   if (props.error) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
-})
+});
 
 const handleChange = () => {
-  console.log(modelValue.value)
-  emit('changed', modelValue.value)
-}
+  console.log(modelValue.value);
+  emit('changed', modelValue.value);
+};
 </script>
 
 <style lang="scss" scoped>

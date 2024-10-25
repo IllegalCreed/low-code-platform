@@ -38,58 +38,58 @@
 </template>
 
 <script lang="ts" setup>
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 
 const emit = defineEmits<{
-  blur: []
-}>()
+  blur: [];
+}>();
 
 const props = withDefaults(
   defineProps<{
-    id?: string
-    type?: string
-    placeholder?: string
-    clearable?: boolean
-    showPassword?: boolean
-    error?: string
+    id?: string;
+    type?: string;
+    placeholder?: string;
+    clearable?: boolean;
+    showPassword?: boolean;
+    error?: string;
   }>(),
   {
     type: 'text',
     placeholder: '',
     clearable: false,
     showPassword: false,
-    error: ''
-  }
-)
+    error: '',
+  },
+);
 
 // 生成唯一 id 或使用提供的 id
-const inputId = computed(() => props.id || uuidv4())
+const inputId = computed(() => props.id || uuidv4());
 
-const modelValue = defineModel<string>('modelValue')
-const isFocused = ref<boolean>(false)
-const isHover = ref<boolean>(false)
-const passwordVisible = ref<boolean>(false)
+const modelValue = defineModel<string>('modelValue');
+const isFocused = ref<boolean>(false);
+const isHover = ref<boolean>(false);
+const passwordVisible = ref<boolean>(false);
 
 const currentType = computed(() => {
   if (props.showPassword && props.type === 'password' && passwordVisible.value) {
-    return 'text'
+    return 'text';
   }
-  return props.type
-})
+  return props.type;
+});
 const hasError = computed(() => {
   if (props.error) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
-})
+});
 
 function clearInput() {
-  modelValue.value = ''
+  modelValue.value = '';
 }
 
 function togglePassword() {
-  passwordVisible.value = !passwordVisible.value
+  passwordVisible.value = !passwordVisible.value;
 }
 </script>
 

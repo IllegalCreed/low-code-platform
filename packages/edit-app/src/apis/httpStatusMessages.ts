@@ -54,7 +54,7 @@ const httpStatusMessages: Record<number, string> = {
   507: '存储空间不足 (507)',
   508: '循环引用 (508)',
   510: '未扩展 (510)',
-  511: '网络认证要求 (511)'
-}
+  511: '网络认证要求 (511)',
+};
 
-export default httpStatusMessages
+export default httpStatusMessages;

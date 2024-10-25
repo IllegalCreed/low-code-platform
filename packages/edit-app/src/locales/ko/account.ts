@@ -22,5 +22,5 @@ export default {
   activating: '활성화 중, 잠시 기다려 주세요',
   activationSuccessful: '활성화 성공, 다음을 진행해 주세요',
   activationCodeExpired: '활성화 코드가 만료되었습니다. 다시',
-  checkYourEmailForActivation: '이메일을 확인하고 등록을 완료하기 위해 활성화 링크를 클릭하세요.'
-}
+  checkYourEmailForActivation: '이메일을 확인하고 등록을 완료하기 위해 활성화 링크를 클릭하세요.',
+};

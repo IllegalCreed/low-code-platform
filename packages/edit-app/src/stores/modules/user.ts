@@ -3,54 +3,54 @@ import {
   usernameCheckAPI,
   emailCheckAPI,
   resendActiveEmailAPI,
-  activateAPI
-} from '@/apis/user'
-import type { UserInterface } from '@/apis/user/types'
-import { defineStore } from 'pinia'
+  activateAPI,
+} from '@/apis/user';
+import type { UserInterface } from '@/apis/user/types';
+import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user', () => {
   async function register(user: UserInterface): Promise<void> {
     try {
-      return await registerAPI(user)
+      return await registerAPI(user);
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
   }
 
   async function usernameCheck(username: string): Promise<boolean> {
     try {
-      const res = await usernameCheckAPI(username)
-      return res.data.available
+      const res = await usernameCheckAPI(username);
+      return res.data.available;
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
   }
 
   async function emailCheck(email: string): Promise<boolean> {
     try {
-      const res = await emailCheckAPI(email)
-      return res.data.available
+      const res = await emailCheckAPI(email);
+      return res.data.available;
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
   }
 
   async function resendActiveEmail(email: string): Promise<boolean> {
     try {
-      const res = await resendActiveEmailAPI(email)
-      return res.data.available
+      const res = await resendActiveEmailAPI(email);
+      return res.data.available;
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
   }
 
   async function activate(token: string): Promise<boolean> {
     try {
-      return await activateAPI(token)
+      return await activateAPI(token);
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error);
     }
   }
 
-  return { register, usernameCheck, emailCheck, resendActiveEmail, activate }
-})
+  return { register, usernameCheck, emailCheck, resendActiveEmail, activate };
+});

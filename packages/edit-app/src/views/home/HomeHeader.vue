@@ -1,13 +1,11 @@
 <template>
-    <header class="header">
-        <div class="title">
-            My Application
-        </div>
-        <div class="welcome">
-            Welcome, 用户名
-            <i-carbon-user-avatar class="icon" />
-        </div>
-    </header>
+  <header class="header">
+    <div class="title">My Application</div>
+    <div class="welcome">
+      Welcome, 用户名
+      <i-carbon-user-avatar class="icon" />
+    </div>
+  </header>
 </template>
 
 <script setup lang="ts">
@@ -16,19 +14,19 @@
 
 <style lang="scss" scoped>
 .header {
-    @apply flex justify-between items-center p-4;
-    @apply bg-gray-800 text-white;
+  @apply flex justify-between items-center p-4;
+  @apply bg-gray-800 text-white;
 }
 
 .title {
-    @apply text-lg font-bold;
+  @apply text-lg font-bold;
 }
 
 .welcome {
-    @apply flex items-center;
+  @apply flex items-center;
 }
 
 .icon {
-    @apply ml-2 text-lg; // 调整图标的大小和位置
+  @apply ml-2 text-lg; // 调整图标的大小和位置
 }
 </style>

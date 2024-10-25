@@ -13,10 +13,7 @@ export class MailerService {
     this.transporter = nodemailer.createTransport(mailerConfig);
   }
 
-  async sendActivationEmail(
-    to: string,
-    token: string,
-  ): Promise<ApiResponse<string>> {
+  async sendActivationEmail(to: string, token: string): Promise<ApiResponse<string>> {
     // 发送激活邮件的实现
     const activationLink = `${process.env.FRONTEND_DOMAIN}/activate?token=${token}`;
     const mailOptions = {

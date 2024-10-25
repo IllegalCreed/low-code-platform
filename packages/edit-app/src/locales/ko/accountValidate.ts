@@ -11,5 +11,5 @@ export default {
   passwordNumberError: '비밀번호는 최소 한 개의 숫자를 포함해야 합니다.',
   passwordSpecialCharError:
     "비밀번호는 최소 한 개의 특수 문자({'@'}, $, !, %, *, ?, &)를 포함해야 합니다.",
-  termsAgreementError: '약관에 동의해야 합니다.'
-}
+  termsAgreementError: '약관에 동의해야 합니다.',
+};

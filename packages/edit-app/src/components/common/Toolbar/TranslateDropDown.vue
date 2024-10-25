@@ -13,16 +13,16 @@
 </template>
 
 <script setup lang="ts">
-import { useLanguage } from '@/composables/language'
-import { isMobile } from '@/utils/platform'
+import { useLanguage } from '@/composables/language';
+import { isMobile } from '@/utils/platform';
 // import { useOrientation } from '@/composables/orientation'
 
-const { currentLanguage, otherLanguage } = useLanguage()
-const { locale } = useI18n()
+const { currentLanguage, otherLanguage } = useLanguage();
+const { locale } = useI18n();
 // const { isPortrait } = useOrientation()
 
 function clickHandle(key: string) {
-  locale.value = key
+  locale.value = key;
 }
 </script>
 

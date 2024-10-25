@@ -23,5 +23,5 @@ export default {
   activationSuccessful: 'Aktivering lyckad, vänligen',
   activationCodeExpired: 'Aktiveringskoden har gått ut. Vänligen',
   checkYourEmailForActivation:
-    'Kontrollera din e-post och klicka på aktiveringslänken för att slutföra registreringsprocessen.'
-}
+    'Kontrollera din e-post och klicka på aktiveringslänken för att slutföra registreringsprocessen.',
+};

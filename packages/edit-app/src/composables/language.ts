@@ -1,18 +1,18 @@
-import type { RemovableRef } from "@vueuse/core"
+import type { RemovableRef } from '@vueuse/core';
 
-const storedLocale: RemovableRef<string> = useLocalStorage('app-locale', 'en')
+const storedLocale: RemovableRef<string> = useLocalStorage('app-locale', 'en');
 
 function getLanguageArray() {
-  const { messages } = useI18n()
+  const { messages } = useI18n();
 
   return Object.entries(messages.value).map(([key, value]) => ({
     key,
-    content: value.language as string
-  }))
+    content: value.language as string,
+  }));
 }
 
 export function useLanguage() {
-  const { t, locale } = useI18n()
+  const { t, locale } = useI18n();
 
   locale.value = storedLocale.value;
 
@@ -21,16 +21,16 @@ export function useLanguage() {
   });
 
   const currentLanguage = computed(() => {
-    return { key: locale.value, content: t('language') }
-  })
+    return { key: locale.value, content: t('language') };
+  });
 
-  const allLanguage = getLanguageArray()
+  const allLanguage = getLanguageArray();
 
   const otherLanguage = computed(() => {
     return allLanguage.filter((item) => {
-      return item.key != locale.value
-    })
-  })
+      return item.key != locale.value;
+    });
+  });
 
-  return { currentLanguage, otherLanguage, allLanguage }
+  return { currentLanguage, otherLanguage, allLanguage };
 }

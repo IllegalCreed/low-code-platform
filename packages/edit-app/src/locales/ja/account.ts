@@ -23,5 +23,5 @@ export default {
   activationSuccessful: '活性化が成功しました、次の手順をお願いします',
   activationCodeExpired: '活性化コードの有効期限が切れました。再度',
   checkYourEmailForActivation:
-    'メールを確認し、登録プロセスを完了するために活性化リンクをクリックしてください。'
-}
+    'メールを確認し、登録プロセスを完了するために活性化リンクをクリックしてください。',
+};

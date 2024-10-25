@@ -45,27 +45,27 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/modules/auth'
-import { isSafari } from '@/utils/platform'
-const { t } = useI18n()
+import { useAuthStore } from '@/stores/modules/auth';
+import { isSafari } from '@/utils/platform';
+const { t } = useI18n();
 
-const slogan = computed(() => [t('slogan.slogan1'), t('slogan.slogan2'), t('slogan.slogan3')])
+const slogan = computed(() => [t('slogan.slogan1'), t('slogan.slogan2'), t('slogan.slogan3')]);
 
-const router = useRouter()
-const authStore = useAuthStore()
+const router = useRouter();
+const authStore = useAuthStore();
 
-const account = ref('')
-const password = ref('')
-const error = ref('')
+const account = ref('');
+const password = ref('');
+const error = ref('');
 
 async function onLogin() {
   try {
-    const result = await authStore.login(account.value, password.value)
+    const result = await authStore.login(account.value, password.value);
     if (result) {
-      router.push({ name: 'home' })
+      router.push({ name: 'home' });
     }
   } catch (err: any) {
-    error.value = err.message
+    error.value = err.message;
   }
 }
 </script>

@@ -1,64 +1,64 @@
-import request from '@/apis'
-import type { UserInterface } from './types'
+import request from '@/apis';
+import type { UserInterface } from './types';
 
 export const registerAPI = (user: UserInterface): Promise<any> => {
   return request.post(
     {
       url: '/user',
-      data: user
+      data: user,
     },
-    false
-  )
-}
+    false,
+  );
+};
 
 export const usernameCheckAPI = (username: string): Promise<any> => {
   const params = {
-    username
-  }
+    username,
+  };
   return request.get(
     {
       url: '/user/check-username',
-      params
+      params,
     },
-    false
-  )
-}
+    false,
+  );
+};
 
 export const emailCheckAPI = (email: string): Promise<any> => {
   const params = {
-    email
-  }
+    email,
+  };
   return request.get(
     {
       url: '/user/check-email',
-      params
+      params,
     },
-    false
-  )
-}
+    false,
+  );
+};
 
 export const resendActiveEmailAPI = (email: string): Promise<any> => {
   const data = {
-    email
-  }
+    email,
+  };
   return request.post(
     {
       url: '/user/resend-activation-email',
-      data
+      data,
     },
-    false
-  )
-}
+    false,
+  );
+};
 
 export const activateAPI = (token: string): Promise<any> => {
   const data = {
-    token
-  }
+    token,
+  };
   return request.post(
     {
       url: '/user/activate',
-      data
+      data,
     },
-    false
-  )
-}
+    false,
+  );
+};

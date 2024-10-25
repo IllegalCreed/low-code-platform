@@ -1,13 +1,7 @@
 <template>
-    <div>
-        dash
-    </div>
+  <div>dash</div>
 </template>
-    
-<script setup lang='ts'>
-    
-</script>
-    
-<style scoped lang="scss">
-    
-</style>
+
+<script setup lang="ts"></script>
+
+<style scoped lang="scss"></style>

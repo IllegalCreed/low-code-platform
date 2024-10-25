@@ -13,10 +13,7 @@ export function hashPassword(password: string): Promise<string> {
   });
 }
 
-export function verifyPassword(
-  password: string,
-  hash: string,
-): Promise<boolean> {
+export function verifyPassword(password: string, hash: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
     const [salt, key] = hash.split(':'); // 从存储的哈希中提取盐和密钥
     crypto.scrypt(password, salt, 64, (err, derivedKey) => {

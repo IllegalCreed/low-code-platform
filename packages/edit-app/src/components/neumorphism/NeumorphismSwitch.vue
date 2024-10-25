@@ -8,7 +8,7 @@
           : undefined
         : inactiveColor
           ? inactiveColor
-          : undefined
+          : undefined,
     }"
     @click="toggle"
   >
@@ -21,7 +21,7 @@
             : undefined
           : inactiveSliderColor
             ? inactiveSliderColor
-            : undefined
+            : undefined,
       }"
     >
       <slot></slot>
@@ -32,47 +32,47 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    defaultValue?: boolean
-    activeColor?: string
-    inactiveColor?: string
-    activeSliderColor?: string
-    inactiveSliderColor?: string
+    defaultValue?: boolean;
+    activeColor?: string;
+    inactiveColor?: string;
+    activeSliderColor?: string;
+    inactiveSliderColor?: string;
   }>(),
   {
-    defaultValue: false
-  }
-)
+    defaultValue: false,
+  },
+);
 
-const modelValue = defineModel<boolean>({ default: undefined })
+const modelValue = defineModel<boolean>({ default: undefined });
 
 const emit = defineEmits<{
-  changed: [value: boolean, event?: MouseEvent]
-}>()
+  changed: [value: boolean, event?: MouseEvent];
+}>();
 
-const _value = ref(modelValue.value ?? props.defaultValue)
-let isInternalChange = false
+const _value = ref(modelValue.value ?? props.defaultValue);
+let isInternalChange = false;
 
 watch(
   () => modelValue.value,
   (newValue) => {
     if (newValue !== undefined && !isInternalChange) {
-      _value.value = newValue
-      emit('changed', newValue)
+      _value.value = newValue;
+      emit('changed', newValue);
     }
-  }
-)
+  },
+);
 
 const toggle = async (event: MouseEvent) => {
-  isInternalChange = true
-  const newValue = !_value.value
+  isInternalChange = true;
+  const newValue = !_value.value;
   if (modelValue.value !== undefined) {
-    modelValue.value = newValue
+    modelValue.value = newValue;
   }
-  _value.value = newValue
-  emit('changed', newValue, event)
-  await nextTick()
-  isInternalChange = false
-}
+  _value.value = newValue;
+  emit('changed', newValue, event);
+  await nextTick();
+  isInternalChange = false;
+};
 </script>
 
 <style lang="scss" scoped>

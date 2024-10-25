@@ -36,35 +36,35 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from '@/stores/modules/user'
+import { useUserStore } from '@/stores/modules/user';
 
-const { t } = useI18n()
-const router = useRouter()
-const route = useRoute()
-const { activate: activateAction } = useUserStore()
+const { t } = useI18n();
+const router = useRouter();
+const route = useRoute();
+const { activate: activateAction } = useUserStore();
 
-const hasToken = ref(false)
-const activating = ref(true)
-const activateSucceed = ref(false)
+const hasToken = ref(false);
+const activating = ref(true);
+const activateSucceed = ref(false);
 
 onMounted(() => {
-  hasToken.value = !!route.query.token
+  hasToken.value = !!route.query.token;
   if (hasToken.value) {
-    activateAccount(route.query.token as string)
+    activateAccount(route.query.token as string);
   } else {
-    activating.value = false
+    activating.value = false;
   }
-})
+});
 
 async function activateAccount(token: string) {
   try {
-    activating.value = true
-    await activateAction(token)
-    activating.value = false
-    activateSucceed.value = true
+    activating.value = true;
+    await activateAction(token);
+    activating.value = false;
+    activateSucceed.value = true;
   } catch (error) {
-    activating.value = false
-    activateSucceed.value = false
+    activating.value = false;
+    activateSucceed.value = false;
   }
 }
 

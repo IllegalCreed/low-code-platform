@@ -18,24 +18,24 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    current?: Item
-    items: Item[]
-    hoverable?: boolean
+    current?: Item;
+    items: Item[];
+    hoverable?: boolean;
   }>(),
   {
-    hoverable: true
-  }
-)
+    hoverable: true,
+  },
+);
 
 const emit = defineEmits<{
-  onItemClick: [key: string]
-}>()
+  onItemClick: [key: string];
+}>();
 
 provide('itemClickHandle', (key: string) => {
-  emit('onItemClick', key)
-})
+  emit('onItemClick', key);
+});
 
-const isPopupVisible = ref(false)
+const isPopupVisible = ref(false);
 </script>
 
 <style lang="scss" scoped>

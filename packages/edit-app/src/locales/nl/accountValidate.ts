@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'Wachtwoord moet ten minste één nummer bevatten.',
   passwordSpecialCharError:
     "Wachtwoord moet ten minste één speciaal teken bevatten ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'U moet akkoord gaan met de voorwaarden.'
-}
+  termsAgreementError: 'U moet akkoord gaan met de voorwaarden.',
+};

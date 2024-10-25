@@ -11,5 +11,5 @@ export default {
   passwordNumberError: 'A senha deve incluir pelo menos um número.',
   passwordSpecialCharError:
     "A senha deve incluir pelo menos um caractere especial ({'@'}, $, !, %, *, ?, &).",
-  termsAgreementError: 'Você deve concordar com os termos.'
-}
+  termsAgreementError: 'Você deve concordar com os termos.',
+};

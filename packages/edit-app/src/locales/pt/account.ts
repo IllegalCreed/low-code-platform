@@ -23,5 +23,5 @@ export default {
   activationSuccessful: 'Ativação bem-sucedida, por favor',
   activationCodeExpired: 'O código de ativação expirou. Por favor',
   checkYourEmailForActivation:
-    'Por favor, verifique seu email e clique no link de ativação para completar o processo de registro.'
-}
+    'Por favor, verifique seu email e clique no link de ativação para completar o processo de registro.',
+};
