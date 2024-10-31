@@ -179,6 +179,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      globals:
+        specifier: ^15.11.0
+        version: 15.11.0
       mysql2:
         specifier: ^3.11.3
         version: 3.11.3
