@@ -12,7 +12,7 @@
     },
     "types": [
       "element-plus/global",
-      "unplugin-icons/types/vue",
+      "unplugin-icons/types/vue"
       // "@intlify/unplugin-vue-i18n/messages"
     ]
   }

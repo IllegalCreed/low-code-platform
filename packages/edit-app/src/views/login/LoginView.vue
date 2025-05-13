@@ -44,6 +44,7 @@
     <tool-bar absolute top-4 right-8></tool-bar>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/modules/auth';
 import { isSafari } from '@/utils/platform';
@@ -64,7 +65,11 @@ async function onLogin() {
     if (result) {
       router.push({ name: 'home' });
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
+    if (!(err instanceof Error)) {
+      error.value = t('error.unknown');
+      return; 
+    }
     error.value = err.message;
   }
 }
