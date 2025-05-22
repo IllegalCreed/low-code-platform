@@ -3,6 +3,8 @@
 </template>
 
 <script setup lang="ts">
+import type { Item } from './types';
+
 interface Props {
   items: Item[];
 }

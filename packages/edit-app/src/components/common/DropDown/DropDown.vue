@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import type { Item } from './types';
+
 const props = withDefaults(
   defineProps<{
     current?: Item;

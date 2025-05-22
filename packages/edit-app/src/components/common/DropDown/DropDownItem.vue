@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import type { Item } from './types';
+
 interface Props {
   item: Item;
 }
