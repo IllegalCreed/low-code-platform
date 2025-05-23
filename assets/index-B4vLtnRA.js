@@ -1,1 +1,0 @@
-import{_ as t,c as o,o as _,w as a,a as r,b as s}from"./index-WY_q2w8s.js";const c={};function p(f,e){const n=r;return _(),o(n,{href:"/app/1",target:"_blank"},{default:a(()=>e[0]||(e[0]=[s("123")])),_:1})}const l=t(c,[["render",p]]);export{l as default};

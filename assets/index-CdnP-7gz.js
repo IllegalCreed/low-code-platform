@@ -1,0 +1,1 @@
+import{_ as t,c as o,o as _,w as a,a as r,b as s}from"./index-CebwfiMI.js";const c={};function p(f,e){const n=s;return _(),o(n,{href:"/app/1",target:"_blank"},{default:a(()=>e[0]||(e[0]=[r("123")])),_:1,__:[0]})}const l=t(c,[["render",p]]);export{l as default};
